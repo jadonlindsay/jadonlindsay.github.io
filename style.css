@@ -126,6 +126,34 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 .project-card .card-subtitle { color: var(--muted); font-style: italic; }
 .project-img { border-radius: 10px; margin-top: 0.75rem; }
+
+/* ---------- Project carousels (manual advance, no auto-slide) ---------- */
+.project-carousel { margin-top: 1rem; }
+.project-carousel .carousel-item img {
+  height: 400px;
+  object-fit: contain;
+  background: #f6f6f6;
+  border-radius: 10px;
+}
+.project-carousel .carousel-caption {
+  position: static;
+  color: var(--muted);
+  padding: 0.5rem 0 0;
+}
+.project-carousel .carousel-caption p { margin: 0; font-size: 0.9rem; }
+.project-carousel .carousel-indicators { position: static; margin: 0.75rem 0 0; }
+.project-carousel .carousel-indicators li { background-color: #bbb; }
+.project-carousel .carousel-indicators li.active { background-color: var(--accent); }
+.project-carousel .carousel-control-prev-icon,
+.project-carousel .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  padding: 1.25rem;
+  background-size: 60% 60%;
+}
+@media (max-width: 767px) {
+  .project-carousel .carousel-item img { height: 260px; }
+}
 .tags { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
 
 .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
