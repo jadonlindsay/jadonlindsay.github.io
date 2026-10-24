@@ -1,0 +1,98 @@
+/* Starter portfolio styles — tweak colors, fonts, and spacing freely. */
+
+:root {
+  --bg: #f7f5f2;
+  --ink: #1e1e1e;
+  --muted: #5a5a5a;
+  --accent: #500000; /* Aggie maroon */
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.hero {
+  background: var(--accent);
+  color: #fff;
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2.5rem;
+}
+
+.tagline { font-size: 1.2rem; margin: 0.25rem 0; }
+.meta { opacity: 0.85; margin: 0.25rem 0 1rem; }
+
+.links a {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  margin: 0 0.25rem;
+  text-decoration: none;
+}
+
+.links a:hover { background: rgba(255, 255, 255, 0.15); }
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+section { margin-bottom: 2.5rem; }
+
+h2 {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.25rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #e3ddd6;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 { margin: 0 0 0.25rem; }
+.role { color: var(--muted); margin: 0 0 0.5rem; font-style: italic; }
+.tags { color: var(--accent); font-size: 0.9rem; }
+
+.skills {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills li {
+  background: var(--card);
+  border: 1px solid #e3ddd6;
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+
+.timeline { list-style: none; padding: 0; }
+.timeline li { margin-bottom: 1rem; }
+.timeline span { display: block; color: var(--muted); }
+
+a { color: var(--accent); }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
