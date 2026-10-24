@@ -141,6 +141,32 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 .btn-hero:hover { color: var(--accent); background: #eeede4; transform: translateY(-2px); }
 
+/* ---------- Projects dropdown on the hero button ---------- */
+.btn-dropdown { position: relative; flex: 1 1 220px; }
+.btn-dropdown > .btn-tile { width: 100%; }
+.btn-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 10;
+}
+.btn-dropdown:hover .btn-dropdown-menu,
+.btn-dropdown:focus-within .btn-dropdown-menu { display: block; }
+.btn-dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: #111010;
+  text-decoration: none;
+  font-weight: 500;
+}
+.btn-dropdown-menu a:hover { background: #eeede4; color: var(--accent); }
+
 .hero-bio { color: #fff; opacity: 0.95; margin-top: 1.5rem; font-size: 1.05rem; }
 
 /* ---------- Experience timeline ---------- */
