@@ -125,6 +125,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 .project-card .card-subtitle { color: var(--muted); font-style: italic; }
+.project-img { border-radius: 10px; margin-top: 0.75rem; }
 .tags { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
 
 .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
