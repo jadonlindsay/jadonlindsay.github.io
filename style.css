@@ -121,6 +121,21 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 .hero-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
 .hero-sub { opacity: 0.9; margin-bottom: 0; font-size: 1.05rem; }
 
+/* ---------- About row with A&M logo ---------- */
+.about-row { display: flex; gap: 1rem; align-items: center; }
+.about-row p { margin-bottom: 0; }
+.about-logo-wrap {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  flex-shrink: 0;
+  box-shadow: var(--card-shadow);
+}
+.about-logo { width: 110px; height: auto; display: block; }
+@media (max-width: 576px) {
+  .about-row { flex-direction: column; align-items: flex-start; }
+}
+
 /* ---------- Experience timeline ---------- */
 .timeline-item {
   margin-bottom: 1.5rem;
