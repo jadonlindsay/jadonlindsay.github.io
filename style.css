@@ -134,6 +134,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 .hero-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
 .hero-headline { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0.75rem 0 0.5rem; line-height: 1.25; }
+.hero-interest { color: #fff; opacity: 0.95; margin-top: 0.75rem; margin-bottom: 0; font-weight: 600; }
 
 /* ---------- Home featured-projects carousel (compact) ---------- */
 .project-carousel.home-carousel .carousel-item img { height: 280px; }
