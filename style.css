@@ -13,8 +13,17 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #faf7f4; }
 h1, h2, h3 { font-family: "Poppins", sans-serif; }
+
+/* Gentle entrance so the page doesn't just snap in */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.content > * { animation: fadeUp 0.45s ease both; }
+.content > *:nth-child(2) { animation-delay: 0.06s; }
+.content > *:nth-child(3) { animation-delay: 0.12s; }
 
 /* ---------- Sidebar (sticks on desktop, stacks on mobile) ---------- */
 .sidebar {
@@ -92,12 +101,15 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 
 /* ---------- Hero banner ---------- */
 .hero-banner {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  background:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px 14px),
+    linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
   color: #fff;
   border-radius: 16px;
   padding: 2.5rem 2rem;
   margin-bottom: 3rem;
   box-shadow: var(--card-shadow);
+  border-bottom: 5px solid #c8a96a;
 }
 .hero-kicker {
   text-transform: uppercase;
@@ -109,7 +121,50 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 .hero-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
 .hero-sub { opacity: 0.9; margin-bottom: 0; font-size: 1.05rem; }
 
-.timeline-item { margin-bottom: 1.5rem; }
+/* ---------- Stat strip: resume numbers, at a glance ---------- */
+.stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+.stat {
+  flex: 1 1 120px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--accent);
+}
+.stat-num {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label { font-size: 0.85rem; color: var(--muted); }
+
+/* ---------- Experience timeline ---------- */
+.timeline-item {
+  margin-bottom: 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid #e8dddd;
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid #faf7f4;
+  box-shadow: 0 0 0 1px var(--accent);
+}
 .timeline-item h3 { margin-bottom: 0; }
 .date { color: var(--muted); font-style: italic; margin-bottom: 0.25rem; }
 
@@ -119,6 +174,17 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   border: none;
   box-shadow: var(--card-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), #c8a96a);
 }
 .project-card:hover {
   transform: translateY(-4px);
@@ -178,8 +244,10 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   color: #fff;
   border-radius: 999px;
   padding: 0.5rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(80, 0, 0, 0.25);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.btn-maroon:hover { color: #fff; opacity: 0.9; }
+.btn-maroon:hover { color: #fff; opacity: 0.92; transform: translateY(-2px); }
 
 footer { color: var(--muted); font-size: 0.9rem; padding: 1rem 0 2rem; }
 a { color: var(--accent); }
