@@ -6,7 +6,7 @@
   <title>Jadon Lindsay — Mechanical Engineering</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <div class="container-fluid">
@@ -39,12 +39,12 @@
 
         <div class="hero-banner">
           <p class="hero-kicker">About</p>
+          <h2 class="hero-headline">Mechanical Engineering Junior at Texas A&amp;M</h2>
           <p class="hero-sub">Design, manufacturing, and hands-on fabrication — from sheet metal systems to an amphibious rover.</p>
           <p class="hero-bio">
-            Mechanical Engineering Junior at Texas A&amp;M — Project Management
-            Intern at Dynamic Systems, Inc. and Systems Mechanical Design Lead
-            on the Triphibian Rover. Proficient in SolidWorks, CREO, and Python.
-            Interested in product design and R&amp;D.
+            Project Management Intern at Dynamic Systems, Inc. and Systems
+            Mechanical Design Lead on the Triphibian Rover. Proficient in
+            SolidWorks, CREO, and Python. Interested in product design and R&amp;D.
           </p>
         </div>
 
@@ -60,6 +60,39 @@
           </div>
           <a class="btn btn-maroon btn-tile" href="resume.pdf" target="_blank">View Resume</a>
         </div>
+
+        <section id="featured-projects">
+          <h2>Projects</h2>
+          <div id="carousel-home" class="carousel slide project-carousel home-carousel" data-ride="carousel" data-interval="false">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-home" data-slide-to="1"></li>
+              <li data-target="#carousel-home" data-slide-to="2"></li>
+              <li data-target="#carousel-home" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <a href="projects.html#triphibian"><img class="d-block w-100" src="rover.png" alt="Triphibian Rover full assembly CAD model"></a>
+                <div class="carousel-caption"><p><a href="projects.html#triphibian">Triphibian Rover</a> — amphibious rover that drives, flies, and floats</p></div>
+              </div>
+              <div class="carousel-item">
+                <a href="projects.html#manpower"><img class="d-block w-100" src="manpower-dashboard-1.jpg" alt="Manpower automation dashboard"></a>
+                <div class="carousel-caption"><p><a href="projects.html#manpower">Manpower Automation Tool</a> — VBA + Python reporting, 60 minutes to seconds</p></div>
+              </div>
+              <div class="carousel-item">
+                <a href="projects.html#dsi-field"><img class="d-block w-100" src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior"></a>
+                <div class="carousel-caption"><p><a href="projects.html#dsi-field">Dynamic Systems Field Work</a> — piping, sheet metal, and weld QC on live job sites</p></div>
+              </div>
+              <div class="carousel-item">
+                <a href="projects.html#toy"><img class="d-block w-100" src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys"></a>
+                <div class="carousel-caption"><p><a href="projects.html#toy">2D &amp; 3D Kinetic Toy</a> — Chebyshev lambda linkage, class Toy Fair</p></div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carousel-home" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+            <a class="carousel-control-next" href="#carousel-home" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+          </div>
+        </section>
+
         <section id="experience">
           <h2>Experience</h2>
           <div class="timeline-item">
