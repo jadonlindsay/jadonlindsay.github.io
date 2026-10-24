@@ -4,16 +4,29 @@
    Built on Bootstrap 4. Tweak --accent to recolor. */
 
 :root {
-  --accent: #500000; /* Aggie maroon */
-  --accent-2: #8a1a1a;
-  --sidebar-bg: #1a1a1a;
-  --sidebar-ink: #f2f2f2;
-  --muted: #6c757d;
+  --accent: #851509;
+  --accent-2: #6e1108;
+  --sidebar-bg: #111010;
+  --sidebar-ink: #eeede4;
+  --muted: #816f68;
   --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #faf7f4; }
+body::before {
+  content: "";
+  position: fixed;
+  right: -40px;
+  bottom: -20px;
+  width: 520px;
+  height: 292px;
+  background: url("tamu-logo.png") no-repeat center / contain;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+.container-fluid { position: relative; z-index: 1; }
+body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #eeede4; color: #111010; }
 h1, h2, h3 { font-family: "Poppins", sans-serif; }
 
 /* Gentle entrance so the page doesn't just snap in */
@@ -27,7 +40,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 
 /* ---------- Sidebar (sticks on desktop, stacks on mobile) ---------- */
 .sidebar {
-  background: linear-gradient(180deg, #1a1a1a 0%, #2b0a0a 100%);
+  background: linear-gradient(180deg, #111010 0%, #240d0a 100%);
   color: var(--sidebar-ink);
   min-height: 100vh;
   padding: 3rem 2rem;
@@ -53,7 +66,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 
 .sidebar h1 { font-size: 1.75rem; margin-bottom: 0.25rem; letter-spacing: 0.5px; }
-.sidebar-role { color: #bbb; margin-bottom: 2rem; }
+.sidebar-role { color: #c9c2b8; margin-bottom: 2rem; }
 
 .sidebar-nav { margin-bottom: 2rem; }
 .sidebar-nav a {
@@ -61,14 +74,14 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   color: var(--sidebar-ink);
   padding: 0.55rem 0;
   text-decoration: none;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #3a3330;
   transition: all 0.2s ease;
 }
 .sidebar-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.08); padding-left: 0.5rem; }
 
 .sidebar-links a {
-  color: #ddd;
-  border: 1px solid #555;
+  color: #eeede4;
+  border: 1px solid #816f68;
   border-radius: 999px;
   padding: 0.3rem 0.9rem;
   margin: 0 0.2rem;
@@ -78,7 +91,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 .sidebar-links a:hover { background: var(--accent-2); border-color: var(--accent-2); color: #fff; transform: translateY(-1px); }
 
-.sidebar-foot { color: #999; font-size: 0.85rem; margin-top: 2rem; }
+.sidebar-foot { color: #a89e95; font-size: 0.85rem; margin-top: 2rem; }
 
 /* ---------- Main content ---------- */
 .content { padding: 3rem 2.5rem; max-width: 900px; }
@@ -109,7 +122,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   padding: 2.5rem 2rem;
   margin-bottom: 3rem;
   box-shadow: var(--card-shadow);
-  border-bottom: 5px solid #c8a96a;
+  border-bottom: 5px solid #816f68;
 }
 .hero-kicker {
   text-transform: uppercase;
@@ -120,8 +133,6 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 .hero-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
 .hero-sub { opacity: 0.9; margin-bottom: 0; font-size: 1.05rem; }
-.hero-about { margin-top: 1.5rem; }
-.hero-banner .about-row p { color: #fff; opacity: 0.95; }
 .hero-btns { margin-top: 1.5rem; }
 .hero-banner .hero-btns { margin-bottom: 0; }
 .btn-hero {
@@ -129,28 +140,15 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   color: var(--accent);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
-.btn-hero:hover { color: var(--accent); background: #fdf8f3; transform: translateY(-2px); }
+.btn-hero:hover { color: var(--accent); background: #eeede4; transform: translateY(-2px); }
 
-/* ---------- About row with A&M logo ---------- */
-.about-row { display: flex; gap: 1rem; align-items: center; }
-.about-row p { margin-bottom: 0; }
-.about-logo-wrap {
-  background: #fff;
-  border-radius: 12px;
-  padding: 0.5rem 0.75rem;
-  flex-shrink: 0;
-  box-shadow: var(--card-shadow);
-}
-.about-logo { width: 110px; height: auto; display: block; }
-@media (max-width: 576px) {
-  .about-row { flex-direction: column; align-items: flex-start; }
-}
+.hero-bio { color: #fff; opacity: 0.95; margin-top: 1.5rem; font-size: 1.05rem; }
 
 /* ---------- Experience timeline ---------- */
 .timeline-item {
   margin-bottom: 1.5rem;
   padding-left: 1.25rem;
-  border-left: 3px solid #e8dddd;
+  border-left: 3px solid #ddd8cf;
   position: relative;
 }
 .timeline-item::before {
@@ -162,7 +160,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   height: 13px;
   border-radius: 50%;
   background: var(--accent);
-  border: 3px solid #faf7f4;
+  border: 3px solid #eeede4;
   box-shadow: 0 0 0 1px var(--accent);
 }
 .timeline-item h3 { margin-bottom: 0; }
@@ -184,7 +182,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2), #c8a96a);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), #816f68);
 }
 .project-card:hover {
   transform: translateY(-4px);
@@ -204,7 +202,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 .project-carousel .carousel-item img {
   height: 400px;
   object-fit: contain;
-  background: #f6f6f6;
+  background: #eeede4;
   border-radius: 10px;
 }
 .project-carousel .carousel-caption {
@@ -214,7 +212,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 }
 .project-carousel .carousel-caption p { margin: 0; font-size: 0.9rem; }
 .project-carousel .carousel-indicators { position: static; margin: 0.75rem 0 0; }
-.project-carousel .carousel-indicators li { background-color: #bbb; }
+.project-carousel .carousel-indicators li { background-color: #816f68; }
 .project-carousel .carousel-indicators li.active { background-color: var(--accent); }
 .project-carousel .carousel-control-prev-icon,
 .project-carousel .carousel-control-next-icon {
@@ -230,8 +228,8 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 
 .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .skill-list li {
-  background: linear-gradient(135deg, #f8f4f4, #f1f1f1);
-  border: 1px solid #e8dddd;
+  background: linear-gradient(135deg, #ffffff, #eeede4);
+  border: 1px solid #ddd8cf;
   border-radius: 999px;
   padding: 0.4rem 1rem;
   font-weight: 500;
@@ -244,7 +242,7 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   color: #fff;
   border-radius: 999px;
   padding: 0.5rem 1.5rem;
-  box-shadow: 0 4px 14px rgba(80, 0, 0, 0.25);
+  box-shadow: 0 4px 14px rgba(133, 21, 9, 0.25);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 .btn-maroon:hover { color: #fff; opacity: 0.92; transform: translateY(-2px); }
@@ -261,29 +259,3 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 footer { color: var(--muted); font-size: 0.9rem; padding: 1rem 0 2rem; }
 a { color: var(--accent); }
 
-/* ---------- Dark mode: follows the device setting ---------- */
-@media (prefers-color-scheme: dark) {
-  body { background: #161313; color: #e8e3e0; }
-  a { color: #d98c8c; }
-
-  .content h2, .content h3, .card-title, .phase-heading { color: #f2edea; }
-  .date, .project-card .card-subtitle, footer { color: #a89f9b; }
-
-  .project-card { background-color: #221e1e; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
-  .project-card:hover { box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55); }
-  .tags { color: #d98c8c; }
-
-  .timeline-item { border-left-color: #3d3835; }
-  .timeline-item::before { border-color: #161313; }
-
-  .project-carousel .carousel-item img { background: #1d1a1a; }
-  .project-carousel .carousel-caption { color: #a89f9b; }
-  .project-carousel .carousel-indicators li { background-color: #555; }
-  .project-carousel .carousel-indicators li.active { background-color: #d98c8c; }
-
-  .skill-list li { background: #2a2624; border-color: #3d3835; color: #e8e3e0; }
-  .skill-list li:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-  .hero-banner { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
-  .btn-maroon { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5); }
-}
