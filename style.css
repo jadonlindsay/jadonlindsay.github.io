@@ -133,7 +133,12 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   margin-bottom: 0.5rem;
 }
 .hero-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
-.hero-sub { opacity: 0.9; margin-bottom: 0; font-size: 1.05rem; }
+.hero-headline { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0.75rem 0 0.5rem; line-height: 1.25; }
+
+/* ---------- Home featured-projects carousel (compact) ---------- */
+.project-carousel.home-carousel .carousel-item img { height: 280px; }
+.home-carousel .carousel-caption p { font-size: 1rem; color: #111010; }
+.home-carousel .carousel-caption a { font-weight: 600; }
 .hero-btns { margin-top: 1.5rem; }
 .hero-banner .hero-btns { margin-bottom: 0; }
 .btn-hero {
