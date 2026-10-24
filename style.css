@@ -125,6 +125,12 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 .project-card .card-subtitle { color: var(--muted); font-style: italic; }
+.phase-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
 .project-img { border-radius: 10px; margin-top: 0.75rem; }
 
 /* ---------- Project carousels (manual advance, no auto-slide) ---------- */
