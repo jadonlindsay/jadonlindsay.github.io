@@ -235,3 +235,30 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 
 footer { color: var(--muted); font-size: 0.9rem; padding: 1rem 0 2rem; }
 a { color: var(--accent); }
+
+/* ---------- Dark mode: follows the device setting ---------- */
+@media (prefers-color-scheme: dark) {
+  body { background: #161313; color: #e8e3e0; }
+  a { color: #d98c8c; }
+
+  .content h2, .content h3, .card-title, .phase-heading { color: #f2edea; }
+  .date, .project-card .card-subtitle, footer { color: #a89f9b; }
+
+  .project-card { background-color: #221e1e; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
+  .project-card:hover { box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55); }
+  .tags { color: #d98c8c; }
+
+  .timeline-item { border-left-color: #3d3835; }
+  .timeline-item::before { border-color: #161313; }
+
+  .project-carousel .carousel-item img { background: #1d1a1a; }
+  .project-carousel .carousel-caption { color: #a89f9b; }
+  .project-carousel .carousel-indicators li { background-color: #555; }
+  .project-carousel .carousel-indicators li.active { background-color: #d98c8c; }
+
+  .skill-list li { background: #2a2624; border-color: #3d3835; color: #e8e3e0; }
+  .skill-list li:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .hero-banner { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
+  .btn-maroon { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5); }
+}
