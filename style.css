@@ -82,15 +82,11 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; }
 .sidebar-foot { color: #a89e95; font-size: 0.85rem; margin-top: 2rem; }
 
 .sidebar-logo-wrap {
-  background: #fff;
-  border-radius: 12px;
-  padding: 0.5rem 0.75rem;
   margin: 2rem auto 0;
-  width: fit-content;
+  width: 100%;
   display: block;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
-.sidebar-logo { width: 96px; max-width: 100%; height: auto; display: block; }
+.sidebar-logo { width: 100%; height: auto; display: block; }
 
 /* ---------- Main content ---------- */
 .content { padding: 3rem 2.5rem; max-width: 900px; }
