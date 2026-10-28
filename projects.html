@@ -6,22 +6,26 @@
   <title>Projects — Jadon Lindsay</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
   <div class="container-fluid">
     <div class="row">
 
       <aside class="col-md-3 sidebar">
-        <img src="profile.jpg" alt="Jadon Lindsay" class="profile-photo">
-        <h1>Jadon Lindsay</h1>
-        <p class="sidebar-role">Mechanical Engineering Student<br>Texas A&amp;M University</p>
+        <div class="sidebar-head">
+          <img src="profile.jpg" alt="Jadon Lindsay" class="profile-photo">
+          <div>
+            <h1>Jadon Lindsay</h1>
+            <p class="sidebar-role">Mechanical Engineering Student<br>Texas A&amp;M University</p>
+          </div>
+        </div>
 
         <nav class="sidebar-nav">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="leadership.html">Leadership</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="index.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>Home</a>
+          <a href="projects.html" class="active" aria-current="page"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 9l10 6 10-6-10-6z"/><path d="M2 15l10 6 10-6"/></svg>Projects</a>
+          <a href="leadership.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M17.5 15.3c2 .6 3.4 2.2 4 4.7"/></svg>Leadership</a>
+          <a href="index.html#contact"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
         </nav>
 
         <div class="sidebar-links">
@@ -38,10 +42,23 @@
       <main class="col-md-9 content">
 
         <section id="projects">
-          <h2>Projects</h2>
+          <div class="cover-header reveal">
+            <img src="rover.png" alt="Triphibian Rover full assembly CAD model">
+            <div class="cover-text">
+              <h2>Projects</h2>
+              <p>Hands-on builds from the shop, the job site, and the design lab.</p>
+            </div>
+          </div>
+
+          <div class="project-index reveal">
+            <a href="#triphibian"><img src="rover.png" alt="Triphibian Rover"><span class="idx-body"><strong>Triphibian Rover</strong><span>Amphibious rover that drives, flies, and floats</span></span></a>
+            <a href="#manpower"><img src="manpower-dashboard-1.jpg" alt="Manpower automation dashboard"><span class="idx-body"><strong>Manpower Automation Tool</strong><span>VBA + Python reporting, 60 minutes to seconds</span></span></a>
+            <a href="#dsi-field"><img src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior"><span class="idx-body"><strong>Dynamic Systems Field Work</strong><span>Piping, sheet metal, and weld QC on live job sites</span></span></a>
+            <a href="#toy"><img src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys"><span class="idx-body"><strong>2D &amp; 3D Kinetic Toy</strong><span>Chebyshev lambda linkage, class Toy Fair</span></span></a>
+          </div>
 
           <!-- ===== Triphibian Rover ===== -->
-          <div class="card project-card" id="triphibian">
+          <div class="card project-card reveal" id="triphibian">
             <div class="card-body">
               <h3 class="card-title">Triphibian Rover — Aggies Create</h3>
               <p class="card-subtitle">Systems Mechanical Design Lead</p>
@@ -109,7 +126,7 @@
           </div>
 
           <!-- ===== Manpower Automation Tool ===== -->
-          <div class="card project-card" id="manpower">
+          <div class="card project-card reveal" id="manpower">
             <div class="card-body">
               <h3 class="card-title">Manpower Automation Tool — Dynamic Systems, Inc.</h3>
               <p class="card-subtitle">Project Management Intern · Summer 2026</p>
@@ -166,7 +183,7 @@
           </div>
 
           <!-- ===== Dynamic Systems Field Work ===== -->
-          <div class="card project-card" id="dsi-field">
+          <div class="card project-card reveal" id="dsi-field">
             <div class="card-body">
               <h3 class="card-title">Dynamic Systems, Inc. — Field Work</h3>
               <p class="card-subtitle">Summer 2026 Internship</p>
@@ -209,7 +226,7 @@
           </div>
 
           <!-- ===== 2D/3D Kinetic Toy ===== -->
-          <div class="card project-card" id="toy">
+          <div class="card project-card reveal" id="toy">
             <div class="card-body">
               <h3 class="card-title">2D &amp; 3D Kinetic Toy — MEEN 210</h3>
               <p class="card-subtitle">Geometric Design and Modeling</p>
@@ -257,6 +274,7 @@
         </section>
         <footer>
           <p>&copy; 2026 Jadon Lindsay</p>
+          <p class="credit">Layout inspiration: HTML5 UP</p>
         </footer>
       </main>
 
@@ -265,5 +283,15 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('inview'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('inview'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+  </script>
 </body>
 </html>
