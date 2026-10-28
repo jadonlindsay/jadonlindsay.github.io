@@ -98,8 +98,9 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; letter-spacing: -0.5px; }
   margin: 1.5rem auto 0;
   width: 100%;
   display: block;
+  text-align: center;
 }
-.sidebar-logo { width: 100%; height: auto; display: block; opacity: 0.5; }
+.sidebar-logo { width: 60%; height: auto; display: block; margin: 0 auto; opacity: 0.5; }
 
 /* ---------- Main content ---------- */
 .content { padding: 3rem 2.5rem; max-width: 900px; }
@@ -129,13 +130,12 @@ h1, h2, h3 { font-family: "Poppins", sans-serif; letter-spacing: -0.5px; }
   margin-top: 0.5rem;
 }
 
-/* White band: alternating rhythm against the cream page */
+/* Continuous strip: no box — the white band runs edge to edge of the
+   main column, alternating with the cream page, Prologue-style. */
 .band {
   background: #fff;
-  border: 1px solid #ddd8cf;
-  border-radius: 0;
-  padding: 2rem 2rem 1.25rem;
-  box-shadow: var(--card-shadow);
+  margin: 0 -2.5rem 3rem;
+  padding: 2rem 2.5rem 1.25rem;
 }
 .band h2::after { background: var(--accent); }
 
