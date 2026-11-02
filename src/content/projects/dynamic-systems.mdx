@@ -1,0 +1,101 @@
+---
+title: Dynamic Systems Internship
+tagline: Four problems I solved over the summer. The common thread is seeing a repetitive or error-prone task, building a system for it, and making it reusable for the team.
+role: Project Management Intern
+dates: May–Aug 2026
+order: 4
+featured: true
+group: work
+keyMetric: 275 welds tracked to 100% closure
+facts:
+  - { label: Role, value: "Project Management Intern at a mechanical contractor (HVAC, hydronic, plumbing)" }
+  - { label: Location and dates, value: "San Antonio, TX · May–Aug 2026" }
+  - { label: Tools, value: "Excel, Office Scripts (TypeScript), Stratus, Bluebeam" }
+cardImage: field-welds.jpg
+cardAlt: Field welds that were tracked, on black fuel oil piping marked with blue tape
+gallery:
+  - { src: on-site-ppe.jpg, section: site, alt: "Jadon in a hard hat and safety vest on a job site", caption: "On site in PPE" }
+  - { src: data-center.jpg, section: site, alt: "Open concrete interior of a building under construction", caption: "Inside the building under construction" }
+  - { src: buda-shop.jpg, section: site, alt: "Jadon in the lobby of the Dynamic Systems Buda shop", caption: "At the Buda shop" }
+  - { src: labor-raw-data-mockup.png, section: labor-input, fit: contain, alt: "Spreadsheet of timecard rows grouped by job code, marked as a mockup with numbers that are not real", caption: "Raw input (sample data)" }
+  - { src: labor-ai-prompt.png, section: labor-process, fit: contain, alt: "Prompt describing the timecard format and the planned summary, with the AI's proposed structure", caption: "How the problem was specified" }
+  - { src: labor-dashboard-1.png, section: labor-output, fit: contain, alt: "Excel dashboard of shop, detailing, overtime and total hours per week", caption: "Dashboard: shop, detailing, overtime, and total hours" }
+  - { src: labor-dashboard-2.png, section: labor-output, fit: contain, alt: "Excel dashboard comparing sheet metal and plumbing manpower and average hours", caption: "Dashboard: sheet metal vs. plumbing manpower and hours" }
+  - { src: labor-weekly-overview.png, section: labor-output, fit: contain, alt: "Weekly Overview table of manpower and average hours per trade", caption: "Weekly Overview table" }
+---
+
+## Weld QC: Tracking 275 Welds to Closure
+
+**The problem:** The general contractor inspected exposed welds from one of our subcontractors on the fuel oil piping and found the root passes weren't fully penetrated. After looking at the rest, they judged them unacceptable. Underpenetrated welds on diesel piping risk leaking in service, and the finding put our work under scrutiny. We needed to show we were finding and fixing every bad weld.
+
+**My role:** My supervisor tasked me with building a system to identify and track every weld, using the shop and contract drawings and Excel.
+
+**The key decision: an ID system people could use in the field.** Numbering welds 1 through 275 would have been useless on site; nobody can count to weld 183. The piping was a header with about 20 identical branches, so I built the IDs around that layout:
+
+- Header welds: **H-01, H-02, H-03…**
+- Branch welds: **branch number – weld number** (1-01, 1-02… 2-01, 2-02…)
+
+<WeldDiagram />
+
+Because the branches were identical, anyone could walk the line, count branches, and know exactly where they were: *"Branch 7, weld 11."* Weld 11 meant the same position on every branch.
+
+**Working with QC:** I built the tracker and map around what the QC inspector needed, checked in with him regularly so we agreed on which weld was which, and went out to look at welds in the field to keep the tracker matching reality.
+
+**Result:** 275 welds tracked. 14 nonconformances (5.1%) were identified, reworked by the subcontractor, and tracked to 100% closure a week ahead of schedule.
+
+<Gallery section="site" />
+
+## Change Order Takeoffs: Pricing a Full Duct Redesign
+
+**The problem:** Between the issued-for-pricing (IFP) and issued-for-construction (IFC) drawings, the entire duct layout in four complex office rooms was redesigned and rerouted. Our price was based on the old design, so we needed to know exactly how much more material and equipment the new one required in order to submit a change order.
+
+**My role:** I did the takeoffs on both the old and new designs so my supervisor could price the difference.
+
+**How I did it:**
+
+- **Counted everything, down to size:** each duct size separately (8" round, 42"×30" rectangular, etc.), plus every connector, grille, VAV box, fan, and other mechanical component, for both the IFP and IFC versions.
+- **Built a reusable Bluebeam toolbox:** Bluebeam can count placed symbols automatically into a table, so I built a library of 50+ detailed, labeled custom symbols for every component type. Building it took many hours over several days, but it made counting dense, intricate sheets faster and more consistent.
+- **Built it for the team, not just this job:** I fleshed out the symbol library and shared it with the PMs so they could reuse it on future takeoffs.
+- **Checked the 3D models, not just the drawings:** 2D plans don't show the full height of duct risers, which add significant sheet metal. I cross-referenced the 3D models so vertical runs weren't missed.
+
+**Result:** My totals fed directly into my supervisor's change order pricing, which came to several thousand dollars. The added ductwork and sheet metal was substantial, and the side-by-side takeoff made the cost of the redesign clear and defensible.
+
+<span id="labor-tool"></span>
+
+## Labor Reporting Tool: Automating a Recurring Report
+
+**The problem:** Project managers used labor charts to plan staffing and budget for the coming weeks. Making them meant pulling months of timecard data into Excel and building the charts by hand, about 2–3 hours per set, roughly once a month. The raw timecards list every employee under each job code, and the same person can show up under several trades in one week, sometimes with a different employee number for each.
+
+<Gallery section="labor-input" />
+
+**The decision:** I was asked to make one set of charts. Since the data always came out of the timekeeping system in the same format, and the PMs would need the charts again, I automated it instead of building them by hand.
+
+**How it works:** I built an Excel Office Script (TypeScript), developed with AI assistance (Claude), that reads every weekly timecard sheet in the workbook and builds a summary table and a dashboard of charts in one run.
+
+- **Sorting by trade:** job codes identify the trade (401/601 = plumbing, 501 = sheet metal), so the script splits hours into plumbing and sheet metal, plus shop and detailing hours.
+- **The hard part:** a name can appear under multiple trades in the same week, even with different employee numbers, so the script consolidates each person's hours by name instead of counting them as separate workers. It also filters out low-hour entries below a threshold so they don't skew the averages.
+- **Built to be read quickly:** color-coded by trade, with average-hours charts on 8-hour increments so hours read as workdays at a glance.
+- **Built to be reused:** each week a new timecard sheet is added and the script is rerun; it deletes and rebuilds the summary and dashboard automatically.
+- **Output:** a Weekly Overview table (manpower, average total/regular/OT hours per trade, shop hours) and a dashboard comparing sheet metal vs. plumbing manpower, average hours, overtime, shop hours, and detailing hours by week.
+
+<Gallery section="labor-process" />
+
+<Gallery section="labor-output" />
+
+**Result:** A 2–3 hour monthly task became a one-click update, saving an estimated ~12 hours over the internship. PMs used the output for staffing and budget decisions.
+
+## Louver RFI: Catching a Spec That Wouldn't Work
+
+**The problem:** When the engineers issued revised drawings, they raised the louver's airflow (CFM) rating but left its pressure drop unchanged. Pushing more air through the same louver raises the pressure drop, so the scheduled numbers couldn't both be true. As drawn, the louver couldn't pass the new airflow at the listed pressure drop, and the fan would face more resistance than the system was designed for.
+
+**My role:** I was tasked with reviewing the new drawings and caught the inconsistency.
+
+**What I did:**
+
+- Drafted an RFI explaining the mismatch and why the louver as specified wouldn't work.
+- Worked with our vendor to find a replacement model that met the new airflow at an acceptable pressure drop, and proposed it in the RFI.
+- Had my supervisor review and approve the RFI before it went to the engineers.
+
+**Result:** The engineer approved our proposed model. The problem was caught on paper during drawing review, before equipment was ordered or installed.
+
+**Why it matters:** Catching a spec conflict during review costs an email. Catching it after install costs a replacement louver, labor, and schedule.

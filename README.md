@@ -1,1 +1,0 @@
-# jadonlindsay.github.io

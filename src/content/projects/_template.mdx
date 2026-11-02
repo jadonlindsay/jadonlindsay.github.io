@@ -1,0 +1,47 @@
+---
+# Copy this file, rename it (the file name becomes the web address), and fill it in.
+# Example: thermal-rig.mdx becomes jadonlindsay.com/thermal-rig/
+# Put the project's photos in src/assets/projects/thermal-rig/
+# Leave out any line you don't need.
+
+title: Project Name                # Shown on the card and at the top of the page
+tagline: One sentence about it     # Shown under the title
+role: What you did                 # Shown on the card
+status: In progress                # Optional
+order: 7                           # Position on the home page, lowest first
+featured: true                     # false hides it from the home page
+group: work                        # work, leadership, or other (other is a small card with no page)
+keyMetric: The one number to show  # Bold line on the card
+atAGlance: A · few · highlights    # Optional summary box
+summary: Short description         # Used only by small cards (group: other)
+link: ""                           # Optional. Makes the card go here instead of its own page
+imageFolder: ""                    # Optional. Use another project's photo folder
+
+facts:                             # Label and value pairs at the top of the page
+  - { label: Role, value: "What you did" }
+  - { label: Tools, value: "SOLIDWORKS, FDM printing" }
+
+cardImage: photo.jpg               # File in the project's photo folder
+cardFit: cover                     # cover fills the frame; contain shows the whole image
+cardAlt: Describe what the photo shows
+heroImage: ""                      # Large image on the project page. Empty means it uses cardImage
+heroAlt: ""
+model3d: ""                        # Path to a .glb file in public/media/. Empty hides the 3D viewer
+
+gallery:                           # Photos. `section` matches <Gallery section="..." /> below
+  - { src: photo.jpg, section: main, alt: "Describe the photo", caption: "Optional caption" }
+  - { placeholder: true, section: main, caption: "Shows a Coming soon frame until you add src and remove placeholder" }
+
+videos:                            # Silent loops, from public/media/<project>/<name>.mp4
+  - { src: clip-name, section: main, alt: "Describe the clip", caption: "Optional caption" }
+---
+
+## First section
+
+Write in plain text. Each "##" heading is added to the page's "On this page" menu.
+
+<Gallery section="main" />
+
+<Video section="main" />
+
+<Chart data="my-chart-file" />

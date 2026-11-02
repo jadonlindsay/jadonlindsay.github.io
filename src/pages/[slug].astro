@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import Gallery from '../components/Gallery.astro';
+import Video from '../components/Video.astro';
+import Chart from '../components/Chart.astro';
+import WeldDiagram from '../components/WeldDiagram.astro';
+
+// Every project gets a page unless it only links elsewhere or is a small card.
+export async function getStaticPaths() {
+  const all = await getCollection('projects');
+  return all
+    .filter((p) => !p.data.link && p.data.group !== 'other')
+    .map((p) => ({ params: { slug: p.id }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const d = project.data;
+const { Content, headings } = await render(project);
+const sections = headings.filter((h) => h.depth === 2);
+const folder = d.imageFolder ?? project.id;
+const hero = d.heroImage || d.cardImage;
+
+const all = (await getCollection('projects'))
+  .filter((p) => !p.data.link && p.data.group !== 'other')
+  .sort((a, b) => a.data.order - b.data.order);
+const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
+---
+<Base title={`${d.title}, Jadon Lindsay`} description={d.tagline ?? d.summary} current={d.group === 'leadership' ? 'leadership' : undefined}>
+  <header class="case-head">
+    <div class="wrap">
+      <a class="back" href="/#work"><span aria-hidden="true">&larr;</span> All work</a>
+      <h1>{d.title}</h1>
+      {d.tagline && <p class="lede">{d.tagline}</p>}
+      {d.facts.length > 0 && (
+        <dl class="facts">
+          {d.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
+        </dl>
+      )}
+      {d.atAGlance && <p class="glance"><strong>At a glance:</strong> {d.atAGlance}</p>}
+      {hero && (
+        <div class="case-hero">
+          <Photo {folder} file={hero} alt={(d.heroImage ? d.heroAlt : d.cardAlt) ?? d.title} fit={d.heroImage ? 'cover' : d.cardFit} ratio="16 / 9" sizes="(max-width: 1240px) 100vw, 1180px" eager />
+        </div>
+      )}
+    </div>
+  </header>
+
+  <div class="wrap case-body">
+    {sections.length > 2 && (
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ul>{sections.map((s) => <li><a href={`#${s.slug}`}>{s.text}</a></li>)}</ul>
+      </nav>
+    )}
+    <article class="prose">
+      <Content components={{ Gallery, Video, Chart, WeldDiagram }} />
+      {d.model3d && (
+        <section>
+          <h2>Explore the model</h2>
+          <model-viewer src={d.model3d} alt={`3D model of ${d.title}`} camera-controls style="width:100%;height:480px"></model-viewer>
+          <script is:inline type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+        </section>
+      )}
+    </article>
+  </div>
+
+  {next && next.id !== project.id && (
+    <a class="next" href={`/${next.id}/`}>
+      <span>Next</span>
+      <strong>{next.data.title} <span aria-hidden="true">&rarr;</span></strong>
+    </a>
+  )}
+</Base>

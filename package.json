@@ -1,0 +1,14 @@
+{
+  "name": "jadonlindsay-portfolio",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.1.2",
+    "astro": "^7.4.5"
+  }
+}

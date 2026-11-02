@@ -1,0 +1,127 @@
+---
+title: The Triphibian Rover
+tagline: A drone that flies, drives, and floats
+role: Systems Mechanical Design Lead
+status: In assembly
+order: 1
+featured: true
+group: work
+keyMetric: ~17% drag reduction · Innovation Expo Top New Project
+atAGlance: 3 parametric flow studies (34 design points) · ~17% drag reduction from cone-height optimization · 4 frame revisions · flies, drives, and floats
+facts:
+  - { label: Role, value: "Systems Mechanical Design Lead (co-directing a team of 5)" }
+  - { label: Program, value: "Aggies Create, Texas A&M (funded student innovation project)" }
+  - { label: Tools, value: "SOLIDWORKS, PTC CREO, SOLIDWORKS Flow Simulation, FDM printing" }
+  - { label: Status, value: In assembly }
+  - { label: Recognition, value: "Fall 2026 Innovation Expo, Top New Project" }
+cardImage: expo-team.jpg
+cardAlt: The TriPhi team in suits with their poster board and the first printed H-frame at the Innovation Expo
+# heroImage: when the full-assembly render is ready, drop it in the folder and put its name here.
+heroImage: ""
+heroAlt: ""
+# model3d: when the 3D file is ready, put it in public/media/triphibian-rover/ and put its path here.
+model3d: ""
+gallery:
+  - { src: tank-concept.png, section: drive, fit: contain, alt: "Sketch of the drone on tank treads under its propellers", caption: "Tank treads: heavy, complex, and in the way of the airflow" }
+  - { src: foam-wheel-brainstorming.png, section: drive, fit: contain, alt: "Page of hand sketches exploring foam wheel shapes and blades", caption: "Foam wheel brainstorming" }
+  - { src: x-frame-4-motor-concept.png, section: frame, fit: contain, alt: "Sketches of X-frame layouts with four wheel motors", caption: "X-frame option with four wheel motors" }
+  - { src: x-frame-axle-concept.png, section: frame, fit: contain, alt: "Sketches of X-frame layouts with a drive axle", caption: "X-frame option with a drive axle" }
+  - { src: h-frame-concept.png, section: frame, fit: contain, alt: "Sketch of the chosen H-frame layout with propellers and wheels", caption: "The H-frame concept we chose" }
+  - { src: paddle-wheel-concept.png, section: wheel, fit: contain, alt: "Hand sketches of paddle wheel profiles", caption: "Paddle wheel concept sketches" }
+  - { src: wheel-candidate-1.png, section: wheel, fit: contain, alt: "CAD render of a green wheel candidate with short blocks around the rim", caption: "Wheel candidate, not chosen" }
+  - { src: wheel-candidate-2.png, section: wheel, fit: contain, alt: "CAD render of a green wheel candidate with curved vanes", caption: "Wheel candidate, not chosen" }
+  - { src: paddle-wheel-render.png, section: wheel-final, fit: contain, alt: "CAD render of the final blue paddle wheel with angled blades", caption: "The final wheel" }
+  - { src: equations-table.png, section: wheel-final, fit: contain, alt: "SOLIDWORKS equations table showing a dimension driven by other dimensions", caption: "The volume-locked model's equations" }
+  - { placeholder: true, section: frame-revisions, caption: "Four printed frame revisions, side by side" }
+  - { placeholder: true, section: assembly, caption: "Assembly progress photos" }
+  - { src: expo-team.jpg, section: recognition, alt: "The TriPhi team in suits with their poster board and the first printed H-frame at the Innovation Expo", caption: "Fall 2026 Innovation Expo" }
+videos:
+  - { src: flow-simulation, section: flow, alt: "Looping flow simulation around the paddle wheel", caption: "SOLIDWORKS Flow Simulation of the paddle wheel" }
+---
+
+## The Problem
+
+Drones burn most of their power just staying in the air, which means short missions. A bigger battery doesn't fix it, because the added weight eats most of the gain. A drone that could *drive* when it doesn't need to fly could stay out far longer, which matters most where people shouldn't go: extreme search and rescue, or inspecting unstable construction sites. More runtime means a slower, more careful search.
+
+A classmate pitched the concept to Aggies Create, and it was selected for funding out of several pitches. We started with the idea and nothing else. No reference design existed for a vehicle that flies, drives, *and* floats, so every part of it had to be worked out from first principles.
+
+## Getting It to Drive
+
+We explored three ways to move on the ground:
+
+- **Skis on stilts,** pushed along by rotor thrust. Simple, but the drone would just get blown around with almost no control.
+- **Tank treads,** which could handle rough terrain and hide a buoyant core, but they were heavy, mechanically complex, and blocked airflow under the props.
+- **Foam wheels,** which solved three problems at once: they float, they absorb landing and rough-terrain impacts, and their bladed profile pushes through water.
+
+<Gallery section="drive" />
+
+## The Frame
+
+Running a drive axle through the body meant a custom **H-frame** instead of the standard X-frame. That ruled out off-the-shelf frames, so every structural part had to be designed and 3D printed in-house. The rover drives and steers on two motors using differential wheel speed.
+
+<Gallery section="frame" />
+
+## Sizing for Buoyancy
+
+Closed-cell foam wheels keep the rover afloat. Neutral buoyancy for a 2 kg design load meant about 2 L of displaced water, so I targeted about 4 L total (61 in³ per wheel) to keep the wheels only partly submerged. The final rover is about 0.9 kg, so the wheels ride roughly 45% submerged, with plenty of margin.
+
+## Optimizing the Wheel
+
+A teammate's Ansys study picked the best wheel shape out of four candidates. My job was to refine it without losing buoyancy.
+
+<Gallery section="wheel" />
+
+The wheel has three sections: a solid cylinder at the center, a drafted cone on one side, and extruded paddle blades on the other. Every dimension trades against the others, because the wheel has to hold 61 in³ to float.
+
+- **A volume-locked model:** I built the SolidWorks model on global variables and equations, so changing one input automatically resized the cylinder to hold volume at 61 in³. Every variant had identical buoyancy, so each design point was an apples-to-apples drag comparison.
+- **Working around the software:** SolidWorks Flow Simulation can't model a water surface, so I used a half-model with a symmetry plane at the waterline and treated the results as relative comparisons.
+
+<Gallery section="wheel-final" />
+
+<Video section="flow" />
+
+I ran three staged parametric studies, locking in each result before starting the next:
+
+**1. Draft angle (0°–60°, 7 design points).** Drag fell steadily as the angle increased, but every added degree cut the cone's volume, forcing a thicker cylinder elsewhere to keep the wheel buoyant. I settled on 40° as the balance between drag and volume.
+
+<Chart data="rover-draft-angle" />
+
+**2. Cone height (0.1"–2.4", 13 design points).** A taller cone streamlines the wheel but takes volume from the cylinder, so efficiency drops at both extremes. Drag bottomed out around 1", **~17% lower than the worst case** (0.1").
+
+<Chart data="rover-cone-height" featured />
+
+**3. Paddle depth (0.2"–1.5", 14 design points).** Deeper paddles push more water but add drag almost linearly. 1.5" paddles had 56% more drag than 0.5". Drag alone would favor the shallowest blade, so this was a thrust-vs-drag tradeoff: I chose **0.5"**, estimated to give enough thrust for a slow-moving rover at only ~15% more drag than the 0.2" minimum. Real thrust will be confirmed in a tank test.
+
+<Chart data="rover-paddle-depth" />
+
+## Designing for the Printer
+
+Every part had to print reliably on an FDM printer, so I split large parts to fit the print bed, oriented them for strength, added fillets, and avoided steep overhangs and unsupported features.
+
+## Iterating the Frame
+
+- **Rev 1:** The wheel motors didn't fit, so I resized the drive bays.
+- **Rev 2:** It was too short, so the props clipped. I raised the rotor height.
+- **Rev 3:** The prop motor screw holes sat under the motor once it was installed, so I relocated them for assembly access.
+- **Rev 4:** The battery was loose in its housing, so I tightened the fit.
+
+<Gallery section="frame-revisions" />
+
+## Leading the Team
+
+I co-direct the mechanical side: setting weekly priorities, assigning tasks across the team, and keeping the project on track against our Gantt schedule. I owned the tube frame design myself and delegated the electrical housing to a teammate, then reviewed that design to make sure it integrated with the frame.
+
+## Recognition
+
+At the Fall 2026 Innovation Expo we presented our full design process and the first printed H-frame, and won **Top New Project**.
+
+<Gallery section="recognition" />
+
+## What's Next
+
+- **Drive gearing:** The wheel motors spin far too fast to drive the wheels directly; at that speed the blade tips would cavitate in water. Paddle wheels work at roughly 100–300 rpm, so we're working out a reduction of about 150:1 to 400:1.
+- **Heat:** Sealing the body for water traps motor heat, and managing that is our next design focus.
+- **Sealing:** Wire pass-throughs from the motors to the battery will be sealed with epoxy.
+- **Water test:** Measure actual paddle thrust in a tank test.
+
+<Gallery section="assembly" />

@@ -1,0 +1,30 @@
+---
+import { getEntry } from 'astro:content';
+
+// Silent looping clips from public/media/<project>/. Pauses for people who turn off motion.
+const { section = 'main' } = Astro.props;
+const slug = Astro.params.slug as string;
+const project = await getEntry('projects', slug);
+const items = (project?.data.videos ?? []).filter((v) => v.section === section);
+---
+{items.length > 0 && (
+  <div class="gallery" data-cols={Math.min(items.length, 2)}>
+    {items.map((v) => (
+      <figure>
+        <video class="loop" autoplay muted loop playsinline preload="metadata" poster={`/media/${slug}/${v.src}-poster.jpg`} aria-label={v.alt}>
+          <source src={`/media/${slug}/${v.src}.mp4`} type="video/mp4" />
+        </video>
+        {v.caption && <figcaption>{v.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+)}
+<script>
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLVideoElement>('video.loop').forEach((v) => {
+      v.pause();
+      v.removeAttribute('autoplay');
+      v.controls = true;
+    });
+  }
+</script>

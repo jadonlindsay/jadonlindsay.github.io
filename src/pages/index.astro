@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Photo from '../components/Photo.astro';
+import site from '../../site.config.json';
+import { Content as About } from '../content/about.md';
+
+const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const work = all.filter((p) => p.data.group === 'work' && p.data.featured);
+const [lead, ...rest] = work;
+const leadership = all.filter((p) => p.data.group === 'leadership' && p.data.featured);
+const other = all.filter((p) => p.data.group === 'other' && p.data.featured);
+const hrefOf = (p: (typeof all)[number]) => p.data.link ?? `/${p.id}/`;
+const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
+---
+<Base current="home">
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <h1>{site.headline}</h1>
+      <p class="lede">{site.subline}</p>
+      <p class="meta">{site.meta}</p>
+      <div class="actions">
+        <a class="btn" href={site.resume} target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn btn-plain" href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-plain" href={`mailto:${site.email}`}>Email</a>
+      </div>
+    </div>
+    <div class="hero-pic">
+      <Photo folder="home" file="headshot.jpg" alt="Portrait of Jadon Lindsay in a navy suit" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" eager />
+    </div>
+  </section>
+
+  <section class="band" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h">Featured work</h2>
+      {lead && (
+        <a class="card card-lead" href={hrefOf(lead)}>
+          <Photo folder={folderOf(lead)} file={lead.data.cardImage!} alt={lead.data.cardAlt ?? ''} fit={lead.data.cardFit} ratio="16 / 9" sizes="(max-width: 900px) 100vw, 700px" />
+          <div class="card-text">
+            <h3>{lead.data.title}</h3>
+            {lead.data.tagline && <p class="lede">{lead.data.tagline}</p>}
+            <p class="role">{lead.data.role}</p>
+            <p class="metric">{lead.data.keyMetric}</p>
+            <span class="go">Read the case study <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      )}
+      <div class="cards">
+        {rest.map((p) => (
+          <a class="card" href={hrefOf(p)}>
+            <Photo folder={folderOf(p)} file={p.data.cardImage!} alt={p.data.cardAlt ?? ''} fit={p.data.cardFit} ratio="16 / 9" sizes="(max-width: 700px) 100vw, 33vw" />
+            <div class="card-text">
+              <h3>{p.data.title}</h3>
+              <p class="role">{p.data.role}</p>
+              <p class="metric">{p.data.keyMetric}</p>
+              <span class="go">{p.data.link ? 'See how it works' : 'Read the case study'} <span aria-hidden="true">&rarr;</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {leadership.map((p) => (
+    <section class="band tone" id="leadership" aria-labelledby="leadership-h">
+      <div class="wrap split">
+        <div>
+          <h2 id="leadership-h">Leadership</h2>
+          <h3>{p.data.title}</h3>
+          <p class="role">{p.data.role}</p>
+          <p>{p.data.atAGlance}</p>
+          <a class="go" href={hrefOf(p)}>Read about recruitment <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <Photo folder={folderOf(p)} file={p.data.cardImage!} alt={p.data.cardAlt ?? ''} ratio="16 / 9" sizes="(max-width: 900px) 100vw, 50vw" />
+      </div>
+    </section>
+  ))}
+
+  {other.length > 0 && (
+    <section class="band" id="other" aria-labelledby="other-h">
+      <div class="wrap">
+        <h2 id="other-h">Other projects</h2>
+        <div class="mini-list">
+          {other.map((p) => (
+            <div class="mini">
+              <Photo folder={folderOf(p)} file={p.data.cardImage!} alt={p.data.cardAlt ?? ''} fit={p.data.cardFit} ratio="4 / 3" sizes="200px" />
+              <div>
+                <h3>{p.data.title}</h3>
+                <p class="role">{p.data.role}</p>
+                <p>{p.data.summary}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="band tone" id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <h2 id="about-h">About</h2>
+      <div class="prose"><About /></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">Contact</h2>
+      <a class="mail" href={`mailto:${site.email}`}>{site.email.split('@')[0]}@<wbr />{site.email.split('@')[1]}</a>
+      <div class="actions">
+        <a class="btn btn-light" href={`mailto:${site.email}`}>Email</a>
+        <a class="btn btn-dark" href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-dark" href={site.resume} target="_blank" rel="noopener">Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+</Base>

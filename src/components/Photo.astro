@@ -1,0 +1,20 @@
+---
+import { Picture } from 'astro:assets';
+import { projectImage } from '../lib/media';
+
+interface Props {
+  folder: string;
+  file: string;
+  alt: string;
+  fit?: 'cover' | 'contain';
+  ratio?: string;
+  sizes?: string;
+  eager?: boolean;
+}
+const { folder, file, alt, fit = 'cover', ratio = '4 / 3', sizes = '(max-width: 700px) 100vw, 50vw', eager = false } = Astro.props;
+const image = projectImage(folder, file);
+const widths = [480, 800, 1200, 1600, 2000].filter((w) => w < image.width).concat(image.width);
+---
+<div class:list={['photo', { contain: fit === 'contain' }]} style={`aspect-ratio: ${ratio}`}>
+  <Picture src={image} formats={['webp']} {widths} {sizes} {alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} />
+</div>

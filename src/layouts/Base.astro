@@ -1,0 +1,52 @@
+---
+import site from '../../site.config.json';
+import '../styles/global.css';
+
+const { title = site.title, description = site.description, current } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [
+  { href: '/#work', label: 'Work', key: 'work' },
+  { href: '/leadership/', label: 'Leadership', key: 'leadership' },
+  { href: '/#about', label: 'About', key: 'about' },
+  { href: '/#contact', label: 'Contact', key: 'contact' },
+];
+---
+<!DOCTYPE html>
+<html lang="en" style={`--accent: ${site.accent}`}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#eeecea" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="bar">
+      <a class="wordmark" href="/">{site.name}</a>
+      <nav aria-label="Main">
+        {nav.map((n) => <a href={n.href} aria-current={current === n.key ? 'page' : undefined}>{n.label}</a>)}
+        <a class="btn" href={site.resume} target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="foot">
+      <span>&copy; 2026 {site.name}</span>
+      <nav aria-label="Footer">
+        <a href={`mailto:${site.email}`}>Email</a>
+        <a href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a href={site.resume} target="_blank" rel="noopener">Resume</a>
+      </nav>
+    </footer>
+  </body>
+</html>

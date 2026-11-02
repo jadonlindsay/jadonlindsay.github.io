@@ -1,0 +1,57 @@
+---
+// Draws a line chart from a file in src/data/. Change the numbers there and the chart follows.
+const files = import.meta.glob<{ default: any }>('/src/data/*.json', { eager: true });
+const { data, featured = false, caption } = Astro.props;
+const found = files[`/src/data/${data}.json`];
+if (!found) throw new Error(`Chart data not found: src/data/${data}.json`);
+const { title, xLabel, yLabel, chosen, chosenLabel, note, points } = found.default;
+
+const W = 720, H = 400, L = 72, R = 20, T = 28, B = 58;
+const xs = points.map((p: any) => p.x), ys = points.map((p: any) => p.y);
+const xMin = Math.min(...xs), xMax = Math.max(...xs);
+
+// A round y range that fits the data. The axis doesn't start at zero, so its labels matter.
+const span = Math.max(...ys) - Math.min(...ys);
+const step = [0.005, 0.01, 0.02, 0.05, 0.1, 0.2].find((s) => span / s <= 6) ?? 0.5;
+const yMin = Math.floor(Math.min(...ys) / step) * step;
+const yMax = Math.ceil(Math.max(...ys) / step) * step;
+const yTicks: number[] = [];
+for (let v = yMin; v <= yMax + step / 2; v += step) yTicks.push(v);
+const dp = step < 0.01 ? 3 : 2;
+
+const px = (x: number) => L + ((x - xMin) / (xMax - xMin)) * (W - L - R);
+const py = (y: number) => T + (1 - (y - yMin) / (yMax - yMin)) * (H - T - B);
+const line = points.map((p: any) => `${px(p.x).toFixed(1)},${py(p.y).toFixed(1)}`).join(' ');
+const xTicks = xs.length > 9 ? xs.filter((_: number, i: number) => i % 2 === 0) : xs;
+const labelAnchor = px(chosen) > W * 0.7 ? 'end' : 'start';
+const labelX = px(chosen) + (labelAnchor === 'end' ? -8 : 8);
+const summary = `${title} study: ${yLabel} against ${xLabel}, with ${chosenLabel} chosen.`;
+---
+<figure class:list={['chart', { featured }]} data-ui>
+  <h4>{title}<span>Chosen: {chosenLabel}</span></h4>
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={summary}>
+    {yTicks.map((v) => (
+      <g>
+        <line class="grid" x1={L} x2={W - R} y1={py(v)} y2={py(v)} />
+        <text class="tick" x={L - 10} y={py(v) + 5} text-anchor="end">{v.toFixed(dp)}</text>
+      </g>
+    ))}
+    {xTicks.map((v: number) => (
+      <text class="tick" x={px(v)} y={H - B + 24} text-anchor="middle">{v}</text>
+    ))}
+    <line class="marker" x1={px(chosen)} x2={px(chosen)} y1={T} y2={H - B} />
+    <text class="marker-label" x={labelX} y={T + 16} text-anchor={labelAnchor}>Chosen: {chosenLabel}</text>
+    <polyline class="trace" points={line} />
+    {points.map((p: any) => (
+      <circle class:list={['dot', { on: p.x === chosen }]} cx={px(p.x)} cy={py(p.y)} r={p.x === chosen ? 7 : 4} />
+    ))}
+    <text class="axis" x={(L + W - R) / 2} y={H - 10} text-anchor="middle">{xLabel}</text>
+    <text class="axis" transform={`translate(18 ${(T + H - B) / 2}) rotate(-90)`} text-anchor="middle">{yLabel}</text>
+  </svg>
+  {(note || caption) && <figcaption>{note || caption}</figcaption>}
+  <table class="sr-only">
+    <caption>{title} data</caption>
+    <thead><tr><th>{xLabel}</th><th>{yLabel}</th></tr></thead>
+    <tbody>{points.map((p: any) => <tr><td>{p.x}</td><td>{p.y}</td></tr>)}</tbody>
+  </table>
+</figure>

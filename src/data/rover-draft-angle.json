@@ -1,0 +1,38 @@
+{
+  "title": "Draft angle",
+  "xLabel": "Draft angle (°)",
+  "yLabel": "Relative drag",
+  "chosen": 40,
+  "chosenLabel": "40°",
+  "note": "Different setup from the other two studies, so the scales don't compare.",
+  "points": [
+    {
+      "x": 0,
+      "y": 0.09073
+    },
+    {
+      "x": 10,
+      "y": 0.09608
+    },
+    {
+      "x": 20,
+      "y": 0.09073
+    },
+    {
+      "x": 30,
+      "y": 0.08271
+    },
+    {
+      "x": 40,
+      "y": 0.07398
+    },
+    {
+      "x": 50,
+      "y": 0.06522
+    },
+    {
+      "x": 60,
+      "y": 0.05807
+    }
+  ]
+}
