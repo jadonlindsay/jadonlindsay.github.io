@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111010">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <meta name="theme-color" content="#f5f2ea">
   <title>Projects — Jadon Lindsay</title>
   <meta name="description" content="Engineering projects by Jadon Lindsay: the Triphibian Rover, a manpower automation tool, Dynamic Systems field work, and a kinetic linkage toy.">
   <meta property="og:type" content="website">
@@ -15,295 +12,203 @@
   <meta property="og:url" content="https://jadonlindsay.com/projects.html">
   <meta property="og:image" content="https://jadonlindsay.com/rover.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=14">
+  <script>document.documentElement.className += ' js';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=21">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="container-fluid">
-    <div class="row">
 
-      <aside class="col-md-3 sidebar">
-        <div class="sidebar-head">
-          <img src="profile.jpg" alt="Jadon Lindsay" class="profile-photo" width="76" height="76">
-          <div>
-            <h1>Jadon Lindsay</h1>
-            <p class="sidebar-role">Mechanical Engineering Student<br>Texas A&amp;M University</p>
-          </div>
-        </div>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html" aria-label="Jadon Lindsay, home"><img src="profile.jpg" alt="" width="34" height="34"><span>Jadon Lindsay</span></a>
+      <ul class="nav-links">
+        <li class="nav-home"><a href="index.html">Home</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <nav class="sidebar-nav">
-          <a href="index.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>Home</a>
-          <a href="projects.html" class="active" aria-current="page"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 9l10 6 10-6-10-6z"/><path d="M2 15l10 6 10-6"/></svg>Projects</a>
-          <a href="leadership.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M17.5 15.3c2 .6 3.4 2.2 4 4.7"/></svg>Leadership</a>
-          <a href="index.html#contact"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
-        </nav>
+  <main id="main">
 
-        <div class="sidebar-links">
-          <a href="mailto:jadontylerlindsay@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/jadon-lindsay1" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="resume.pdf" target="_blank">Resume</a>
-        </div>
+    <section class="page-head">
+      <div class="wrap">
+        <span class="eyebrow reveal">Projects &middot; 04 entries</span>
+        <h1 class="reveal" style="--d:1">Projects</h1>
+        <p class="lede reveal" style="--d:2">Hands-on builds from the shop, the job site, and the design lab.</p>
+      </div>
+    </section>
 
-        <div class="sidebar-logo-wrap"><img src="tamu-logo.png" width="900" height="879" alt="Texas A&amp;M Aggies logo" class="sidebar-logo"></div>
-
-        <p class="sidebar-foot">B.S. Mechanical Engineering<br>Expected May 2028 &middot; GPA 3.96</p>
-      </aside>
-
-      <main id="main" class="col-md-9 content">
-
-        <section id="projects">
-          <div class="cover-header reveal">
-            <img src="rover.png" alt="Triphibian Rover full assembly CAD model">
-            <div class="cover-text">
-              <h2>Projects</h2>
-              <p>Hands-on builds from the shop, the job site, and the design lab.</p>
-            </div>
-          </div>
-
-          <div class="project-index reveal">
-            <a href="#triphibian"><img src="rover.png" alt="Triphibian Rover"><span class="idx-body"><strong>Triphibian Rover</strong><span>Amphibious rover that drives, flies, and floats</span></span></a>
-            <a href="#manpower"><img src="manpower-dashboard-1.jpg" alt="Manpower automation dashboard"><span class="idx-body"><strong>Manpower Automation Tool</strong><span>VBA + Python reporting, 60 minutes to seconds</span></span></a>
-            <a href="#dsi-field"><img src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior"><span class="idx-body"><strong>Dynamic Systems Field Work</strong><span>Piping, sheet metal, and weld QC on live job sites</span></span></a>
-            <a href="#toy"><img src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys"><span class="idx-body"><strong>2D &amp; 3D Kinetic Toy</strong><span>Chebyshev lambda linkage, class Toy Fair</span></span></a>
-          </div>
-
-          <!-- ===== Triphibian Rover ===== -->
-          <div class="card project-card reveal" id="triphibian">
-            <div class="card-body">
-              <h3 class="card-title">Triphibian Rover — Aggies Create</h3>
-              <p class="card-subtitle">Systems Mechanical Design Lead</p>
-              <p class="card-text">
-                Amphibious rover designed to drive, fly, and float. Large foam
-                wheels double as buoyant floats, with an integrated paddle design
-                for water movement that minimizes turbulence in the air.
-              </p>
-              <p class="tags">SolidWorks &middot; PTC CREO &middot; Flow Simulation &middot; FDM Prototyping</p>
-              <h4 class="phase-heading">Design Semester — Spring 2026</h4>
-              <p class="card-text">
-                Airframe components, structural chassis bays, dynamic seals, and
-                connection architecture designed in PTC CREO and SolidWorks, with
-                SolidWorks Flow Simulation used to compare wheel profiles for
-                drag versus buoyancy. First frame iteration printed and presented
-                at the Spring 2026 Aggies Create Innovation Expo, where it won
-                Top New Project.
-              </p>
-              <div id="carousel-rover" class="carousel slide project-carousel" data-ride="carousel" data-interval="false">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-rover" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-rover" data-slide-to="1"></li>
-                  <li data-target="#carousel-rover" data-slide-to="2"></li>
-                  <li data-target="#carousel-rover" data-slide-to="3"></li>
-                  <li data-target="#carousel-rover" data-slide-to="4"></li>
-                  <li data-target="#carousel-rover" data-slide-to="5"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="rover.png" alt="Triphibian Rover full assembly CAD model">
-                    <div class="carousel-caption"><p>Full assembly — exploded view</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="rover-sketch.jpg" alt="Early Triphibian Rover concept sketches">
-                    <div class="carousel-caption"><p>Concept sketches — early design phase</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="rover-frame.jpg" alt="Triphibian Rover frame CAD model">
-                    <div class="carousel-caption"><p>Frame — CAD model</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="rover-paddle.jpg" alt="Paddle wheel CAD model">
-                    <div class="carousel-caption"><p>Paddle wheel — drive on land, propel on water</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="rover-water-sketch.jpg" alt="Paddle wheel water propulsion sketch">
-                    <div class="carousel-caption"><p>Water propulsion — concept sketch</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="rover-expo.jpg" alt="Triphibian team at the Aggies Create Innovation Expo">
-                    <div class="carousel-caption"><p>Innovation Expo — Top New Project, Spring 2026</p></div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel-rover" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-                <a class="carousel-control-next" href="#carousel-rover" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-              </div>
-              <h4 class="phase-heading">Build Semester — In Progress</h4>
-              <p class="card-text">
-                The design is done — the team is now building the drone, working
-                toward an end-of-semester prototype. Current work includes a
-                redesigned front frame half with DC and brushless motors.
-              </p>
-              <img loading="lazy" src="build-motor.jpg" width="360" height="480" class="img-fluid project-img" alt="Redesigned front frame half with DC and brushless motor">
-            </div>
-          </div>
-
-          <!-- ===== Manpower Automation Tool ===== -->
-          <div class="card project-card reveal" id="manpower">
-            <div class="card-body">
-              <h3 class="card-title">Manpower Automation Tool — Dynamic Systems, Inc.</h3>
-              <p class="card-subtitle">Project Management Intern · Summer 2026</p>
-              <p class="card-text">
-                Months of payroll timesheets — separated by trade, hour type, and
-                employee — had to be consolidated by hand across dozens of sheets.
-                I built a VBA and Python script that reads every timesheet tab,
-                identifies each trade by job code, consolidates hours across
-                entries, filters out sub-12-hour weeks, and outputs a Weekly
-                Overview table plus a 9-chart dashboard. A 60-minute manual task
-                now takes seconds, giving managers faster insight for budgeting
-                and staffing decisions.
-              </p>
-              <p class="tags">VBA &middot; Python &middot; Excel Automation &middot; Data Analysis</p>
-              <div id="carousel-manpower" class="carousel slide project-carousel" data-ride="carousel" data-interval="false">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-manpower" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-manpower" data-slide-to="1"></li>
-                  <li data-target="#carousel-manpower" data-slide-to="2"></li>
-                  <li data-target="#carousel-manpower" data-slide-to="3"></li>
-                  <li data-target="#carousel-manpower" data-slide-to="4"></li>
-                  <li data-target="#carousel-manpower" data-slide-to="5"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="manpower-dashboard-1.jpg" alt="Manpower dashboard charts">
-                    <div class="carousel-caption"><p>Dashboard — shop, detailing, and OT hours per week</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="manpower-dashboard-2.jpg" alt="Manpower and average hours charts">
-                    <div class="carousel-caption"><p>Dashboard — headcount and average hours by trade</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="manpower-overview.jpg" alt="Weekly Overview — output table">
-                    <div class="carousel-caption"><p>Weekly Overview — output table</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="manpower-raw-data.jpg" alt="Raw timesheet data mockup">
-                    <div class="carousel-caption"><p>Raw timesheet data — starting point (mockup)</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="manpower-prompt.jpg" alt="Original problem specification">
-                    <div class="carousel-caption"><p>Problem spec — original automation request</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="manpower-plan.jpg" alt="Automation plan">
-                    <div class="carousel-caption"><p>Automation plan — build approach</p></div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel-manpower" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-                <a class="carousel-control-next" href="#carousel-manpower" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== Dynamic Systems Field Work ===== -->
-          <div class="card project-card reveal" id="dsi-field">
-            <div class="card-body">
-              <h3 class="card-title">Dynamic Systems, Inc. — Field Work</h3>
-              <p class="card-subtitle">Summer 2026 Internship</p>
-              <p class="card-text">
-                Time on live job sites alongside the office work — mechanical
-                piping and sheet metal systems in progress, including a weld QC
-                tracking system mapping 275 individual welds by ID, plus the
-                Buda shop center.
-              </p>
-              <p class="tags">Piping &middot; Sheet Metal &middot; Weld QC &middot; Field Coordination</p>
-              <div id="carousel-dsi" class="carousel slide project-carousel" data-ride="carousel" data-interval="false">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-dsi" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-dsi" data-slide-to="1"></li>
-                  <li data-target="#carousel-dsi" data-slide-to="2"></li>
-                  <li data-target="#carousel-dsi" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior">
-                    <div class="carousel-caption"><p>Job site — mechanical systems installation</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="dsi-welds.jpg" alt="Pipe welds awaiting QC">
-                    <div class="carousel-caption"><p>Pipe welds — QC inspection</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="dsi-jobsite-2.jpg" alt="On site in PPE at a Dynamic Systems job site">
-                    <div class="carousel-caption"><p>On site — field work in PPE</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="dsi-buda.jpg" alt="Dynamic Systems Buda shop center">
-                    <div class="carousel-caption"><p>Buda shop center — Dynamic Systems</p></div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel-dsi" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-                <a class="carousel-control-next" href="#carousel-dsi" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== 2D/3D Kinetic Toy ===== -->
-          <div class="card project-card reveal" id="toy">
-            <div class="card-body">
-              <h3 class="card-title">2D &amp; 3D Kinetic Toy — MEEN 210</h3>
-              <p class="card-subtitle">Geometric Design and Modeling</p>
-              <p class="card-text">
-                A functional kinetic toy built around a gear-driven Chebyshev
-                lambda linkage, designed with a team. First built in 2D —
-                SolidWorks models, laser-cut acrylic pieces, pinned and glued,
-                then painted. Then reimagined in 3D with 10+ custom 3D-printed
-                gears, applying a 0.15 mm tolerance offset across pin-joints and
-                gear profiles to account for printer shrinkage and laser kerf,
-                and validated across 3 design iterations before presenting at
-                the class Toy Fair.
-              </p>
-              <p class="tags">SolidWorks &middot; Chebyshev Lambda Linkage &middot; Laser Cutting &middot; 3D Printing &middot; GD&amp;T</p>
-              <div id="carousel-toy" class="carousel slide project-carousel" data-ride="carousel" data-interval="false">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-toy" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-toy" data-slide-to="1"></li>
-                  <li data-target="#carousel-toy" data-slide-to="2"></li>
-                  <li data-target="#carousel-toy" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys">
-                    <div class="carousel-caption"><p>Finished toys — 2D (left) and 3D (right), Team 22</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="toy-sketch.jpg" alt="Kinetic toy concept sketch">
-                    <div class="carousel-caption"><p>Concept sketch — linkage and balloon lift</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="toy-laser.jpg" alt="Laser cutting toy parts">
-                    <div class="carousel-caption"><p>Laser cutting — 2D parts</p></div>
-                  </div>
-                  <div class="carousel-item">
-                    <img loading="lazy" class="d-block w-100" src="toy-slicer.jpg" alt="Slicer setup for 3D printed toy parts">
-                    <div class="carousel-caption"><p>Slicer setup — 3D parts</p></div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel-toy" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-                <a class="carousel-control-next" href="#carousel-toy" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <footer>
-          <p>&copy; 2026 Jadon Lindsay</p>
-          <p class="credit">Layout inspiration: HTML5 UP</p>
-        </footer>
-      </main>
-
+    <div class="wrap reveal" style="--d:3">
+      <ol class="index">
+        <li><a href="#triphibian"><span class="mono muted">01</span><span class="t">Triphibian Rover<small>Amphibious rover that drives, flies, and floats</small></span><svg class="arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 8v9H8"/></svg></a></li>
+        <li><a href="#manpower"><span class="mono muted">02</span><span class="t">Manpower Automation Tool<small>VBA + Python reporting, 60 minutes to seconds</small></span><svg class="arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 8v9H8"/></svg></a></li>
+        <li><a href="#dsi-field"><span class="mono muted">03</span><span class="t">Dynamic Systems Field Work<small>Piping, sheet metal, and weld QC on live job sites</small></span><svg class="arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 8v9H8"/></svg></a></li>
+        <li><a href="#toy"><span class="mono muted">04</span><span class="t">2D &amp; 3D Kinetic Toy<small>Chebyshev lambda linkage, class Toy Fair</small></span><svg class="arrow" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 8v9H8"/></svg></a></li>
+      </ol>
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-  <script>
-  (function () {
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('inview'); }); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('inview'); io.unobserve(en.target); } });
-    }, { threshold: 0.12 });
-    els.forEach(function (e) { io.observe(e); });
-  })();
-  </script>
+
+    <!-- ===== 01 Triphibian Rover ===== -->
+    <article class="case" id="triphibian">
+      <div class="wrap">
+        <div class="case-head">
+          <div class="reveal">
+            <span class="case-num mono">01 / 04 &middot; Aggies Create</span>
+            <h2>Triphibian Rover</h2>
+            <p class="role">Systems Mechanical Design Lead</p>
+          </div>
+          <div class="case-copy reveal" style="--d:1">
+            <p>Amphibious rover designed to drive, fly, and float. Large foam wheels double as buoyant floats, with an integrated paddle design for water movement that minimizes turbulence in the air.</p>
+            <dl class="specs">
+              <div><dt>Role</dt><dd>Systems Mechanical Design Lead</dd></div>
+              <div><dt>Team</dt><dd>5 engineers</dd></div>
+              <div><dt>Recognition</dt><dd>Innovation Expo — Top New Project</dd></div>
+              <div><dt>Tools</dt><dd>SolidWorks, PTC CREO, Flow Simulation, FDM</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="phase reveal">
+          <div><span class="eyebrow">Phase 1</span><h3>Design Semester — Spring 2026</h3></div>
+          <p>Airframe components, structural chassis bays, dynamic seals, and connection architecture designed in PTC CREO and SolidWorks, with SolidWorks Flow Simulation used to compare wheel profiles for drag versus buoyancy. First frame iteration printed and presented at the Spring 2026 Aggies Create Innovation Expo, where it won Top New Project.</p>
+        </div>
+
+        <div class="gallery reveal" data-gallery>
+          <div class="gallery-track" tabindex="0" role="region" aria-label="Triphibian Rover photos">
+            <figure class="slide"><div class="frame"><div class="core"><img src="rover.png" alt="Triphibian Rover full assembly CAD model" width="1410" height="972"></div></div><figcaption>Full assembly — exploded view</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="rover-sketch.jpg" alt="Early Triphibian Rover concept sketches" width="1069" height="901" loading="lazy"></div></div><figcaption>Concept sketches — early design phase</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="rover-frame.jpg" alt="Triphibian Rover frame CAD model" width="1504" height="985" loading="lazy"></div></div><figcaption>Frame — CAD model</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="rover-paddle.jpg" alt="Paddle wheel CAD model" width="1036" height="1025" loading="lazy"></div></div><figcaption>Paddle wheel — drive on land, propel on water</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="rover-water-sketch.jpg" alt="Paddle wheel water propulsion sketch" width="1241" height="864" loading="lazy"></div></div><figcaption>Water propulsion — concept sketch</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="rover-expo.jpg" alt="Triphibian team at the Aggies Create Innovation Expo" width="1280" height="853" loading="lazy"></div></div><figcaption>Innovation Expo — Top New Project, Spring 2026</figcaption></figure>
+          </div>
+          <div class="gallery-ui"><span class="gallery-count mono">01 / 06</span><div class="gallery-btns"><button type="button" data-dir="-1" aria-label="Previous photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></button><button type="button" data-dir="1" aria-label="Next photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
+        </div>
+
+        <div class="phase reveal">
+          <div>
+            <span class="eyebrow">Phase 2 &middot; In progress</span>
+            <h3>Build Semester</h3>
+            <p style="margin-top:1rem">The design is done — the team is now building the drone, working toward an end-of-semester prototype. Current work includes a redesigned front frame half with DC and brushless motors.</p>
+          </div>
+          <div class="frame"><div class="core"><img src="build-motor.jpg" alt="Redesigned front frame half with DC and brushless motor" width="360" height="480" loading="lazy"></div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== 02 Manpower Automation Tool ===== -->
+    <article class="case" id="manpower">
+      <div class="wrap">
+        <div class="case-head">
+          <div class="reveal">
+            <span class="case-num mono">02 / 04 &middot; Dynamic Systems, Inc.</span>
+            <h2>Manpower Automation Tool</h2>
+            <p class="role">Project Management Intern &middot; Summer 2026</p>
+          </div>
+          <div class="case-copy reveal" style="--d:1">
+            <p>Months of payroll timesheets — separated by trade, hour type, and employee — had to be consolidated by hand across dozens of sheets. I built a VBA and Python script that reads every timesheet tab, identifies each trade by job code, consolidates hours across entries, filters out sub-12-hour weeks, and outputs a Weekly Overview table plus a 9-chart dashboard.</p>
+            <p>A 60-minute manual task now takes seconds, giving managers faster insight for budgeting and staffing decisions.</p>
+            <dl class="specs">
+              <div><dt>Time saved</dt><dd>60 min → seconds</dd></div>
+              <div><dt>Output</dt><dd>Weekly Overview + 9-chart dashboard</dd></div>
+              <div><dt>Tools</dt><dd>VBA, Python, Excel</dd></div>
+              <div><dt>Focus</dt><dd>Automation &amp; data analysis</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="gallery reveal" data-gallery>
+          <div class="gallery-track" tabindex="0" role="region" aria-label="Manpower Automation Tool screenshots">
+            <figure class="slide"><div class="frame"><div class="core"><img src="manpower-dashboard-1.jpg" alt="Manpower dashboard charts" width="1010" height="557" loading="lazy"></div></div><figcaption>Dashboard — shop, detailing, and OT hours per week</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="manpower-dashboard-2.jpg" alt="Manpower and average hours charts" width="1010" height="557" loading="lazy"></div></div><figcaption>Dashboard — headcount and average hours by trade</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="manpower-overview.jpg" alt="Weekly Overview output table" width="1010" height="557" loading="lazy"></div></div><figcaption>Weekly Overview — output table</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="manpower-raw-data.jpg" alt="Raw timesheet data mockup" width="1400" height="762" loading="lazy"></div></div><figcaption>Raw timesheet data — starting point (mockup)</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="manpower-prompt.jpg" alt="Original problem specification" width="1400" height="920" loading="lazy"></div></div><figcaption>Problem spec — original automation request</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="manpower-plan.jpg" alt="Automation plan" width="1400" height="1013" loading="lazy"></div></div><figcaption>Automation plan — build approach</figcaption></figure>
+          </div>
+          <div class="gallery-ui"><span class="gallery-count mono">01 / 06</span><div class="gallery-btns"><button type="button" data-dir="-1" aria-label="Previous photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></button><button type="button" data-dir="1" aria-label="Next photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== 03 Dynamic Systems Field Work ===== -->
+    <article class="case" id="dsi-field">
+      <div class="wrap">
+        <div class="case-head">
+          <div class="reveal">
+            <span class="case-num mono">03 / 04 &middot; Dynamic Systems, Inc.</span>
+            <h2>Field Work</h2>
+            <p class="role">Summer 2026 Internship</p>
+          </div>
+          <div class="case-copy reveal" style="--d:1">
+            <p>Time on live job sites alongside the office work — mechanical piping and sheet metal systems in progress, including a weld QC tracking system mapping 275 individual welds by ID, plus the Buda shop center.</p>
+            <dl class="specs">
+              <div><dt>Welds tracked</dt><dd>275, mapped by ID</dd></div>
+              <div><dt>Systems</dt><dd>Chilled water, sanitary, pneumatic</dd></div>
+              <div><dt>Standards</dt><dd>ASME Y14 drawings</dd></div>
+              <div><dt>Focus</dt><dd>Piping, sheet metal, weld QC</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="gallery reveal" data-gallery>
+          <div class="gallery-track" tabindex="0" role="region" aria-label="Dynamic Systems field work photos">
+            <figure class="slide"><div class="frame"><div class="core"><img src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior" width="1400" height="1049" loading="lazy"></div></div><figcaption>Job site — mechanical systems installation</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="dsi-welds.jpg" alt="Pipe welds awaiting QC" width="1050" height="1400" loading="lazy"></div></div><figcaption>Pipe welds — QC inspection</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="dsi-jobsite-2.jpg" alt="On site in PPE at a Dynamic Systems job site" width="648" height="486" loading="lazy"></div></div><figcaption>On site — field work in PPE</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="dsi-buda.jpg" alt="Dynamic Systems Buda shop center" width="788" height="1400" loading="lazy"></div></div><figcaption>Buda shop center — Dynamic Systems</figcaption></figure>
+          </div>
+          <div class="gallery-ui"><span class="gallery-count mono">01 / 04</span><div class="gallery-btns"><button type="button" data-dir="-1" aria-label="Previous photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></button><button type="button" data-dir="1" aria-label="Next photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== 04 2D/3D Kinetic Toy ===== -->
+    <article class="case" id="toy">
+      <div class="wrap">
+        <div class="case-head">
+          <div class="reveal">
+            <span class="case-num mono">04 / 04 &middot; MEEN 210</span>
+            <h2>2D &amp; 3D Kinetic Toy</h2>
+            <p class="role">Geometric Design and Modeling</p>
+          </div>
+          <div class="case-copy reveal" style="--d:1">
+            <p>A functional kinetic toy built around a gear-driven Chebyshev lambda linkage, designed with a team. First built in 2D — SolidWorks models, laser-cut acrylic pieces, pinned and glued, then painted.</p>
+            <p>Then reimagined in 3D with 10+ custom 3D-printed gears, applying a 0.15&nbsp;mm tolerance offset across pin-joints and gear profiles to account for printer shrinkage and laser kerf, and validated across 3 design iterations before presenting at the class Toy Fair.</p>
+            <dl class="specs">
+              <div><dt>Mechanism</dt><dd>Chebyshev lambda linkage</dd></div>
+              <div><dt>Tolerance</dt><dd>0.15&nbsp;mm offset</dd></div>
+              <div><dt>Iterations</dt><dd>3, with 10+ printed gears</dd></div>
+              <div><dt>Tools</dt><dd>SolidWorks, laser cutting, 3D printing, GD&amp;T</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="gallery reveal" data-gallery>
+          <div class="gallery-track" tabindex="0" role="region" aria-label="Kinetic toy photos">
+            <figure class="slide"><div class="frame"><div class="core"><img src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys" width="960" height="1280" loading="lazy"></div></div><figcaption>Finished toys — 2D (left) and 3D (right), Team 22</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="toy-sketch.jpg" alt="Kinetic toy concept sketch" width="640" height="514" loading="lazy"></div></div><figcaption>Concept sketch — linkage and balloon lift</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="toy-laser.jpg" alt="Laser cutting toy parts" width="960" height="1280" loading="lazy"></div></div><figcaption>Laser cutting — 2D parts</figcaption></figure>
+            <figure class="slide"><div class="frame"><div class="core"><img src="toy-slicer.jpg" alt="Slicer setup for 3D printed toy parts" width="960" height="1280" loading="lazy"></div></div><figcaption>Slicer setup — 3D parts</figcaption></figure>
+          </div>
+          <div class="gallery-ui"><span class="gallery-count mono">01 / 04</span><div class="gallery-btns"><button type="button" data-dir="-1" aria-label="Previous photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></button><button type="button" data-dir="1" aria-label="Next photo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button></div></div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-id"><img src="tamu-logo.png" alt="Texas A&amp;M Aggies logo" width="900" height="879" loading="lazy"><span class="mono">&copy; 2026 Jadon Lindsay</span></div>
+      <span class="mono">B.S. Mechanical Engineering &middot; Texas A&amp;M</span>
+    </div>
+  </footer>
+
+  <script src="site.js?v=21"></script>
 </body>
 </html>

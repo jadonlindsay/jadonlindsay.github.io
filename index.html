@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111010">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <meta name="theme-color" content="#f5f2ea">
   <title>Jadon Lindsay — Mechanical Engineering</title>
   <meta name="description" content="Jadon Lindsay, Mechanical Engineering junior at Texas A&amp;M. Design, manufacturing, and hands-on fabrication, from sheet metal systems to an amphibious rover.">
   <meta property="og:type" content="website">
@@ -15,164 +12,196 @@
   <meta property="og:url" content="https://jadonlindsay.com/">
   <meta property="og:image" content="https://jadonlindsay.com/rover.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=14">
+  <script>document.documentElement.className += ' js';</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=21">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="container-fluid">
-    <div class="row">
 
-      <aside class="col-md-3 sidebar">
-        <div class="sidebar-head">
-          <img src="profile.jpg" alt="Jadon Lindsay" class="profile-photo" width="76" height="76">
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html" aria-label="Jadon Lindsay, home"><img src="profile.jpg" alt="" width="34" height="34"><span>Jadon Lindsay</span></a>
+      <ul class="nav-links">
+        <li class="nav-home"><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
           <div>
-            <h1>Jadon Lindsay</h1>
-            <p class="sidebar-role">Mechanical Engineering Student<br>Texas A&amp;M University</p>
-          </div>
-        </div>
-
-        <nav class="sidebar-nav">
-          <a href="index.html" class="active" aria-current="page"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>Home</a>
-          <a href="projects.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 9l10 6 10-6-10-6z"/><path d="M2 15l10 6 10-6"/></svg>Projects</a>
-          <a href="leadership.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M17.5 15.3c2 .6 3.4 2.2 4 4.7"/></svg>Leadership</a>
-          <a href="index.html#contact"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
-        </nav>
-
-        <div class="sidebar-links">
-          <a href="mailto:jadontylerlindsay@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/jadon-lindsay1" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="resume.pdf" target="_blank">Resume</a>
-        </div>
-
-        <div class="sidebar-logo-wrap"><img src="tamu-logo.png" width="900" height="879" alt="Texas A&amp;M Aggies logo" class="sidebar-logo"></div>
-
-        <p class="sidebar-foot">B.S. Mechanical Engineering<br>Expected May 2028 &middot; GPA 3.96</p>
-      </aside>
-
-      <main id="main" class="col-md-9 content">
-
-        <div class="hero-banner reveal">
-          <p class="hero-kicker">About</p>
-          <h2 class="hero-headline">Mechanical Engineering Junior at Texas A&amp;M</h2>
-          <p class="hero-sub">Design, manufacturing, and hands-on fabrication — from sheet metal systems to an amphibious rover.</p>
-          <p class="hero-bio">
-            Project Management Intern at Dynamic Systems, Inc. and Systems
-            Mechanical Design Lead on the Triphibian Rover. Proficient in
-            SolidWorks, CREO, and Python.
-          </p>
-          <p class="hero-interest">Interested in product design and R&amp;D.</p>
-        </div>
-
-        <div class="btn-row reveal">
-          <div class="btn-dropdown">
-            <a class="btn btn-maroon btn-tile" href="projects.html">View Engineering Projects</a>
-            <div class="btn-dropdown-menu">
-              <a href="projects.html#triphibian">Triphibian Rover</a>
-              <a href="projects.html#manpower">Manpower Automation Tool</a>
-              <a href="projects.html#dsi-field">Dynamic Systems Field Work</a>
-              <a href="projects.html#toy">2D &amp; 3D Kinetic Toy</a>
+            <span class="eyebrow reveal">Texas A&amp;M &middot; Mechanical Engineering</span>
+            <h1 class="reveal" style="--d:1">Mechanical Engineering Junior at <em>Texas A&amp;M</em></h1>
+            <p class="lede reveal" style="--d:2">Design, manufacturing, and hands-on fabrication — from sheet metal systems to an amphibious rover.</p>
+            <p class="muted reveal" style="--d:2">Project Management Intern at Dynamic Systems, Inc. and Systems Mechanical Design Lead on the Triphibian Rover. Interested in product design and R&amp;D.</p>
+            <div class="hero-actions reveal" style="--d:3">
+              <a class="btn btn-primary" href="projects.html">View Projects <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+              <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">View Resume <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
             </div>
           </div>
-          <a class="btn btn-maroon btn-tile" href="resume.pdf" target="_blank">View Resume</a>
+          <figure class="portrait reveal" style="--d:2">
+            <div class="frame"><div class="core"><img src="profile.jpg" alt="Jadon Lindsay" width="571" height="800" fetchpriority="high"></div></div>
+            <figcaption class="mono"><span>Jadon Lindsay</span><span>Class of 2028</span></figcaption>
+          </figure>
         </div>
+      </div>
+    </section>
 
-        <section id="featured-projects" class="band reveal">
-          <h2>Projects</h2>
-          <div id="carousel-home" class="carousel slide project-carousel home-carousel" data-ride="carousel" data-interval="false">
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-home" data-slide-to="1"></li>
-              <li data-target="#carousel-home" data-slide-to="2"></li>
-              <li data-target="#carousel-home" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <a href="projects.html#triphibian"><img class="d-block w-100" src="rover.png" alt="Triphibian Rover full assembly CAD model"></a>
-                <div class="carousel-caption"><p><a href="projects.html#triphibian">Triphibian Rover</a> — amphibious rover that drives, flies, and floats</p></div>
-              </div>
-              <div class="carousel-item">
-                <a href="projects.html#manpower"><img loading="lazy" class="d-block w-100" src="manpower-dashboard-1.jpg" alt="Manpower automation dashboard"></a>
-                <div class="carousel-caption"><p><a href="projects.html#manpower">Manpower Automation Tool</a> — VBA + Python reporting, 60 minutes to seconds</p></div>
-              </div>
-              <div class="carousel-item">
-                <a href="projects.html#dsi-field"><img loading="lazy" class="d-block w-100" src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior"></a>
-                <div class="carousel-caption"><p><a href="projects.html#dsi-field">Dynamic Systems Field Work</a> — piping, sheet metal, and weld QC on live job sites</p></div>
-              </div>
-              <div class="carousel-item">
-                <a href="projects.html#toy"><img loading="lazy" class="d-block w-100" src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys"></a>
-                <div class="carousel-caption"><p><a href="projects.html#toy">2D &amp; 3D Kinetic Toy</a> — Chebyshev lambda linkage, class Toy Fair</p></div>
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carousel-home" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-            <a class="carousel-control-next" href="#carousel-home" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-          </div>
-        </section>
-
-        <section id="experience" class="reveal">
-          <h2>Experience</h2>
-          <div class="timeline-item">
-            <h3>Project Management Intern — Dynamic Systems, Inc.</h3>
-            <p class="date">May 2026 – Aug 2026 · San Antonio, TX</p>
-            <p>Automated weekly labor reporting, updated facility flushing and
-            pressure-testing procedures across three mechanical networks
-            (chilled water, sanitary, pneumatic), interpreted piping layouts
-            and shop drawings against ASME Y14, and built a weld QC tracking
-            system mapping 275 individual welds by ID.</p>
-          </div>
-          <div class="timeline-item">
-            <h3>Systems Mechanical Design Lead — Aggies Create, Triphibian Rover</h3>
-            <p class="date">Texas A&amp;M</p>
-            <p>Co-directing a team of 5 engineers building an amphibious rover
-            that drives, flies, and floats, with an end-of-semester prototype
-            as the target.</p>
-          </div>
-        </section>
-        <section id="skills" class="band reveal">
-          <h2>Skills &amp; Tools</h2>
-          <ul class="skill-list">
-            <li>SolidWorks</li>
-            <li>PTC CREO</li>
-            <li>Rapid Prototyping (FDM)</li>
-            <li>Laser Cutting</li>
-            <li>SolidWorks Flow Simulation</li>
-            <li>Python</li>
-            <li>Excel</li>
-            <li>VBA</li>
-          </ul>
-          <p><strong>Relevant coursework:</strong> Thermodynamics, Fluid Mechanics, Solid Mechanics, Materials Science</p>
-          <p><strong>Awards:</strong> Fall 2026 Innovation Expo — Top New Project</p>
-        </section>
-        <section id="contact" class="reveal">
-          <h2>Contact</h2>
-          <p>
-            Best way to reach me:
-            <a href="mailto:jadontylerlindsay@gmail.com">jadontylerlindsay@gmail.com</a>
-            or <a href="https://www.linkedin.com/in/jadon-lindsay1" target="_blank" rel="noopener">LinkedIn</a>.
-          </p>
-          <a class="btn btn-maroon" href="resume.pdf" target="_blank">Download Resume</a>
-        </section>
-        <footer>
-          <p>&copy; 2026 Jadon Lindsay</p>
-          <p class="credit">Layout inspiration: HTML5 UP</p>
-        </footer>
-      </main>
-
+    <div class="wrap reveal">
+      <dl class="specs">
+        <div><dt>Degree</dt><dd>B.S. Mechanical Engineering</dd></div>
+        <div><dt>Graduation</dt><dd>May 2028</dd></div>
+        <div><dt>GPA</dt><dd>3.96</dd></div>
+        <div><dt>Interests</dt><dd>Product design &amp; R&amp;D</dd></div>
+      </dl>
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-  <script>
-  (function () {
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('inview'); }); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('inview'); io.unobserve(en.target); } });
-    }, { threshold: 0.12 });
-    els.forEach(function (e) { io.observe(e); });
-  })();
-  </script>
+
+    <section class="section" id="featured-projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">01 — Projects</span>
+            <h2>Selected projects</h2>
+          </div>
+          <p>From CAD and flow simulation to the laser cutter, the job site, and the spreadsheet.</p>
+        </div>
+
+        <div class="bento">
+          <a class="tile tile-lg frame reveal" href="projects.html#triphibian">
+            <div class="core">
+              <div class="tile-media contain"><img src="rover.png" alt="Triphibian Rover full assembly CAD model" width="1410" height="972"></div>
+              <div class="tile-body">
+                <div><span class="mono muted">01 &middot; Aggies Create</span><h3>Triphibian Rover</h3><p>Amphibious rover that drives, flies, and floats.</p></div>
+                <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </a>
+          <a class="tile frame reveal" style="--d:1" href="projects.html#manpower">
+            <div class="core">
+              <div class="tile-media"><img src="manpower-dashboard-1.jpg" alt="Manpower automation dashboard" width="1010" height="557" loading="lazy"></div>
+              <div class="tile-body">
+                <div><span class="mono muted">02 &middot; Dynamic Systems</span><h3>Manpower Automation</h3><p>VBA + Python reporting, 60 minutes to seconds.</p></div>
+                <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </a>
+          <a class="tile frame reveal" style="--d:2" href="projects.html#dsi-field">
+            <div class="core">
+              <div class="tile-media"><img src="dsi-jobsite-1.jpg" alt="Dynamic Systems job site interior" width="1400" height="1049" loading="lazy"></div>
+              <div class="tile-body">
+                <div><span class="mono muted">03 &middot; Field Work</span><h3>Job Site &amp; Weld QC</h3><p>Piping, sheet metal, and 275 tracked welds.</p></div>
+                <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </a>
+          <a class="tile tile-wide frame reveal" href="projects.html#toy">
+            <div class="core">
+              <div class="tile-media"><img class="focus-top" src="toy-finished.jpg" alt="Finished 2D and 3D kinetic toys" width="960" height="1280" loading="lazy"></div>
+              <div class="tile-body">
+                <div><span class="mono muted">04 &middot; MEEN 210</span><h3>2D &amp; 3D Kinetic Toy</h3><p>Gear-driven Chebyshev lambda linkage, built twice: laser-cut acrylic, then 10+ printed gears.</p></div>
+                <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">02 — Experience</span>
+            <h2>Experience</h2>
+          </div>
+        </div>
+        <div class="rows">
+          <article class="row reveal">
+            <p class="when mono">May – Aug 2026<br>San Antonio, TX</p>
+            <div>
+              <h3>Project Management Intern</h3>
+              <p class="org">Dynamic Systems, Inc.</p>
+              <p>Automated weekly labor reporting, updated facility flushing and pressure-testing procedures across three mechanical networks (chilled water, sanitary, pneumatic), interpreted piping layouts and shop drawings against ASME Y14, and built a weld QC tracking system mapping 275 individual welds by ID.</p>
+            </div>
+          </article>
+          <article class="row reveal">
+            <p class="when mono">Spring 2026 – Present<br>Texas A&amp;M</p>
+            <div>
+              <h3>Systems Mechanical Design Lead</h3>
+              <p class="org">Aggies Create — Triphibian Rover</p>
+              <p>Co-directing a team of 5 engineers building an amphibious rover that drives, flies, and floats, with an end-of-semester prototype as the target.</p>
+            </div>
+          </article>
+          <article class="row reveal">
+            <p class="when mono">Jan 2026 – Present<br>Texas A&amp;M</p>
+            <div>
+              <h3>Recruitment Chair</h3>
+              <p class="org">Professional Brotherhood of Engineers</p>
+              <p>Organized 10 recruitment events, processed 150+ candidate profiles, and managed a $2,000 budget. <a href="leadership.html">More on leadership</a></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">03 — Toolkit</span>
+            <h2>Skills &amp; Tools</h2>
+          </div>
+        </div>
+        <ul class="chips reveal">
+          <li>SolidWorks</li>
+          <li>PTC CREO</li>
+          <li>SolidWorks Flow Simulation</li>
+          <li>Rapid Prototyping (FDM)</li>
+          <li>Laser Cutting</li>
+          <li>Python</li>
+          <li>Excel</li>
+          <li>VBA</li>
+        </ul>
+        <dl class="specs reveal" style="--cols:2">
+          <div><dt>Relevant coursework</dt><dd>Thermodynamics, Fluid Mechanics, Solid Mechanics, Materials Science</dd></div>
+          <div><dt>Awards</dt><dd>Aggies Create Innovation Expo — Top New Project</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="cta reveal">
+          <span class="eyebrow">04 — Contact</span>
+          <h2>Let's build something.</h2>
+          <p>The best way to reach me is email at <a class="mail" href="mailto:jadontylerlindsay@gmail.com">jadontylerlindsay@gmail.com</a>, or connect on LinkedIn.</p>
+          <div class="hero-actions">
+            <a class="btn btn-light" href="mailto:jadontylerlindsay@gmail.com">Email Me <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+            <a class="btn btn-outline-light" href="https://www.linkedin.com/in/jadon-lindsay1" target="_blank" rel="noopener">LinkedIn <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+            <a class="btn btn-outline-light" href="resume.pdf" target="_blank" rel="noopener">Download Resume <span class="arrow"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-id"><img src="tamu-logo.png" alt="Texas A&amp;M Aggies logo" width="900" height="879" loading="lazy"><span class="mono">&copy; 2026 Jadon Lindsay</span></div>
+      <span class="mono">B.S. Mechanical Engineering &middot; Texas A&amp;M</span>
+    </div>
+  </footer>
+
+  <script src="site.js?v=21"></script>
 </body>
 </html>
