@@ -148,6 +148,7 @@ a:hover > .go span, a:hover > * > .go span, a.go:hover span { transform: transla
 .gallery[data-cols="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .soon { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--surface); color: var(--muted); font-weight: 700; }
 video.loop { width: 100%; background: #fff; }
+.viewer { display: block; width: 100%; height: clamp(320px, 60vh, 560px); margin-top: 20px; background: #fff; --poster-color: #fff; }
 
 .chart, .weld { margin: 24px 0 28px; padding: 20px; background: var(--card); }
 .chart { max-width: 620px; }

@@ -38,6 +38,7 @@ const projects = defineCollection({
     gallery: z.array(media).default([]),
     videos: z.array(media).default([]),
     model3d: z.string().optional(),
+    model3dPoster: z.string().optional(),
   }),
 });
 

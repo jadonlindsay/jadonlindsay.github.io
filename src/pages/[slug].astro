@@ -18,7 +18,8 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const d = project.data;
 const { Content, headings } = await render(project);
-const sections = headings.filter((h) => h.depth === 2);
+const sections = headings.filter((h) => h.depth === 2).map((h) => ({ slug: h.slug, text: h.text }));
+if (d.model3d) sections.push({ slug: 'model', text: 'Explore the 3D Model' });
 const folder = d.imageFolder ?? project.id;
 const hero = d.heroImage || d.cardImage;
 
@@ -44,6 +45,7 @@ const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
           <Photo {folder} file={hero} alt={(d.heroImage ? d.heroAlt : d.cardAlt) ?? d.title} fit={d.heroImage ? 'cover' : d.cardFit} ratio="16 / 9" sizes="(max-width: 1240px) 100vw, 1180px" eager />
         </div>
       )}
+      {d.model3d && <div class="actions"><a class="btn btn-plain" href="#model">Explore the 3D model</a></div>}
     </div>
   </header>
 
@@ -57,9 +59,11 @@ const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
     <article class="prose">
       <Content components={{ Gallery, Video, Chart, WeldDiagram }} />
       {d.model3d && (
-        <section>
-          <h2>Explore the model</h2>
-          <model-viewer src={d.model3d} alt={`3D model of ${d.title}`} camera-controls style="width:100%;height:480px"></model-viewer>
+        <section id="model">
+          <h2>Explore the 3D Model</h2>
+          <p>Drag to rotate. Scroll or pinch to zoom.</p>
+          <model-viewer class="viewer" src={d.model3d} poster={d.model3dPoster} alt={`Interactive 3D model of ${d.title}`} camera-controls auto-rotate shadow-intensity="1" loading="lazy" touch-action="pan-y" exposure="0.5" tone-mapping="neutral" camera-orbit="-35deg 58deg 95%"></model-viewer>
+          <script is:inline>if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelector('model-viewer').removeAttribute('auto-rotate');</script>
           <script is:inline type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
         </section>
       )}

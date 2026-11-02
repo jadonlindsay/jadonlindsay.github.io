@@ -39,10 +39,10 @@ Avoid the characters `{` and `<` in your writing, because these files treat them
 
 These are waiting on the rover (`triphibian-rover.mdx`):
 
-- **Full-assembly render:** put the file name in `heroImage:` and fill in `heroAlt:`. It becomes the large image at the top of the page.
 - **Four printed frame revisions:** the placeholder in `section: frame-revisions`.
 - **Assembly progress photos:** the placeholder in `section: assembly`.
-- **3D model:** put the `.glb` file in `public/media/triphibian-rover/` and set `model3d: /media/triphibian-rover/your-file.glb`. The 3D viewer stays hidden until you do.
+
+**Updating the rover's 3D model:** replace `public/media/triphibian-rover/triphibian-rover.glb`, keeping that exact name. On any project, setting `model3d:` adds the 3D viewer, and leaving it empty hides it.
 
 ## 3. Update a chart's numbers
 
