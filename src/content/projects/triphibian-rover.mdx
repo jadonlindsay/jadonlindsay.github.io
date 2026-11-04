@@ -37,6 +37,7 @@ gallery:
   - { src: expo-team.jpg, section: recognition, alt: "The TriPhi team in suits with their poster board and the first printed H-frame at the Innovation Expo", caption: "Fall 2026 Innovation Expo" }
 videos:
   - { src: flow-simulation, section: flow, alt: "Looping flow simulation around the paddle wheel", caption: "SOLIDWORKS Flow Simulation of the paddle wheel" }
+  - { src: rover-motor-wheel-assembly, section: manufacturing, alt: "CAD animation of the drive motor, front cap, frame tube, shaft and wheel coming together", caption: "Drive assembly sequence: motor to front cap, cap to frame tube, shaft, wheel." }
 ---
 
 ## The Problem
@@ -94,9 +95,17 @@ I ran three staged parametric studies, locking in each result before starting th
 
 <Chart data="rover-paddle-depth" />
 
-## Designing for the Printer
+## Designing for Manufacturing & Assembly
 
-Every part had to print reliably on an FDM printer, so I split large parts to fit the print bed, oriented them for strength, added fillets, and avoided steep overhangs and unsupported features.
+<Video section="manufacturing" />
+
+**Getting the motor to stay put.** A drive motor pushes back on whatever holds it: when it turns the wheel, the same torque tries to spin the motor body the other way. A motor held only by friction inside the tube would just spin itself, and without something behind it, the wheel loads would push it along the tube.
+
+**Working out what couldn't work.** The design came from ruling options out. Inserting the motor from the far end of the tube was out: once it was inside, there was no way to reach in and fasten it. That left the front. The tube got a **fixed rear backing** inside it for the motor to seat against, and a removable **front cap**: two screws fasten the motor's face to the cap, and four more fasten the cap to the tube end. The backing stops the motor sliding, and the screwed-on cap carries the motor's torque into the frame instead of relying on friction. Everything is fastened from the outside, which set the assembly order: motor onto cap, motor and cap into the tube, shaft, then wheel.
+
+**Built to come apart.** The same sequence runs in reverse: pull the wheel, remove four screws, and slide the motor out. Swapping a failed motor or testing a design change doesn't mean rebuilding the frame. (The animation simplifies the drive shaft to a plain rod; the real shaft has a non-round profile so it grips the wheel.)
+
+**Designing for the printer.** Every part had to print reliably on an FDM printer, so I split large parts to fit the print bed, oriented them for strength, added fillets, and avoided steep overhangs and unsupported features.
 
 ## Iterating the Frame
 
