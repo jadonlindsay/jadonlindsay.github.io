@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="More airflow through the same louver raises the pressure drop">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#500000"/></marker>
+  </defs>
+  <rect width="320" height="200" fill="#f7f6f4"/>
+  <g stroke="#2b2a29" stroke-width="7" stroke-linecap="square">
+    <path d="M146 44l28 18M146 72l28 18M146 100l28 18M146 128l28 18"/>
+  </g>
+  <g fill="none" stroke="#2b2a29" stroke-width="3"><rect x="138" y="30" width="44" height="136"/></g>
+  <g fill="none" stroke="#500000" stroke-width="6" marker-end="url(#a)">
+    <path d="M26 58h96"/><path d="M26 98h96"/><path d="M26 138h96"/>
+  </g>
+  <g fill="none" stroke="#500000" stroke-width="3" marker-end="url(#a)">
+    <path d="M198 72h80"/><path d="M198 124h80"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#2b2a29">
+    <text x="26" y="186">More airflow</text>
+    <text x="294" y="186" text-anchor="end">Higher pressure drop</text>
+  </g>
+</svg>

@@ -44,6 +44,18 @@ These are waiting on the rover (`triphibian-rover.mdx`):
 
 **Updating the rover's 3D model:** replace `public/media/triphibian-rover/triphibian-rover.glb`, keeping that exact name. On any project, setting `model3d:` adds the 3D viewer, and leaving it empty hides it.
 
+**Long pages:** put supporting detail inside a click-to-open box, so the page stays short but nothing is lost:
+
+```
+<More title="How it works" note="One short line about what's inside">
+
+Your text and photos go here, with a blank line after the first line and before the last.
+
+</More>
+```
+
+The `highlights:` list at the top of a project file sets the summary cards under the title. Each has a `title`, a `metric`, an `href` that jumps to a section, and an optional `image`. Add `thumb="photo.jpg"` to a `More` box to give it a thumbnail. Leave it out to show no cards.
+
 ## 3. Update a chart's numbers
 
 Open the chart's file in `src/data/` and change the `y` value next to its `x` value. The chart redraws itself. For example, the draft angle reruns for 0° and 20° go in `rover-draft-angle.json`.

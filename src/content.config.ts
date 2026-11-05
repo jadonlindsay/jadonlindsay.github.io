@@ -28,6 +28,7 @@ const projects = defineCollection({
     summary: z.string().optional(),
     keyMetric: z.string().optional(),
     atAGlance: z.string().optional(),
+    highlights: z.array(z.object({ title: z.string(), metric: z.string(), href: z.string(), image: z.string().optional(), position: z.string().optional() })).default([]),
     facts: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
     imageFolder: z.string().optional(),
     cardImage: z.string().optional(),

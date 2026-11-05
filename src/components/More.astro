@@ -1,0 +1,22 @@
+---
+import { getEntry } from 'astro:content';
+import Photo from './Photo.astro';
+
+// Click-to-open box for supporting detail. Text stays in the page, so nothing is lost.
+// `thumb` is a file in the project's photo folder, or a /media/ path for a drawing.
+const { title, note, thumb, position } = Astro.props;
+const slug = Astro.params.slug as string;
+const project = await getEntry('projects', slug);
+const folder = project?.data.imageFolder ?? slug;
+---
+<details class="more">
+  <summary>
+    {thumb && (
+      <span class="more-thumb">
+        {thumb.startsWith('/') ? <img src={thumb} alt="" width="320" height="200" loading="lazy" /> : <Photo {folder} file={thumb} alt="" ratio="8 / 5" sizes="150px" {position} />}
+      </span>
+    )}
+    <span class="more-text"><strong>{title}</strong>{note && <span>{note}</span>}</span>
+  </summary>
+  <div class="more-body"><slot /></div>
+</details>

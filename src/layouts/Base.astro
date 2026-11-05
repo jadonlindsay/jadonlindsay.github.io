@@ -49,5 +49,15 @@ const nav = [
         <a href={site.resume} target="_blank" rel="noopener">Resume</a>
       </nav>
     </footer>
+    <script is:inline>
+      // A link into a closed "more" section opens it first.
+      function revealTarget() {
+        var el = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (!el) return;
+        for (var p = el.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+      }
+      addEventListener('hashchange', revealTarget);
+      revealTarget();
+    </script>
   </body>
 </html>

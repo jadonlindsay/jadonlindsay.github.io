@@ -7,6 +7,11 @@ order: 4
 featured: true
 group: work
 keyMetric: 275 welds tracked to 100% closure
+highlights:
+  - { title: "Weld QC", metric: "275 welds tracked to 100% closure", href: "#weld-qc-tracking-275-welds-to-closure", image: field-welds.jpg, position: "50% 45%" }
+  - { title: "Change order takeoffs", metric: "50+ symbol toolbox shared with PMs", href: "#change-order-takeoffs-pricing-a-full-duct-redesign", image: /media/dynamic-systems/takeoff.svg }
+  - { title: "Labor reporting tool", metric: "2–3 hr monthly task → one click", href: "#labor-tool", image: labor-dashboard-1.png, position: "28% 50%" }
+  - { title: "Louver RFI", metric: "Caught on paper before ordering", href: "#louver-rfi-catching-a-spec-that-wouldnt-work", image: /media/dynamic-systems/louver.svg }
 facts:
   - { label: Role, value: "Project Management Intern at a mechanical contractor (HVAC, hydronic, plumbing)" }
   - { label: Location and dates, value: "San Antonio, TX · May–Aug 2026" }
@@ -28,8 +33,6 @@ gallery:
 
 **The problem:** The general contractor inspected exposed welds from one of our subcontractors on the fuel oil piping and found the root passes weren't fully penetrated. After looking at the rest, they judged them unacceptable. Underpenetrated welds on diesel piping risk leaking in service, and the finding put our work under scrutiny. We needed to show we were finding and fixing every bad weld.
 
-**My role:** My supervisor tasked me with building a system to identify and track every weld, using the shop and contract drawings and Excel.
-
 **The key decision: an ID system people could use in the field.** Numbering welds 1 through 275 would have been useless on site; nobody can count to weld 183. The piping was a header with about 20 identical branches, so I built the IDs around that layout:
 
 - Header welds: **H-01, H-02, H-03…**
@@ -39,15 +42,25 @@ gallery:
 
 Because the branches were identical, anyone could walk the line, count branches, and know exactly where they were: *"Branch 7, weld 11."* Weld 11 meant the same position on every branch.
 
-**Working with QC:** I built the tracker and map around what the QC inspector needed, checked in with him regularly so we agreed on which weld was which, and went out to look at welds in the field to keep the tracker matching reality.
-
 **Result:** 275 welds tracked. 14 nonconformances (5.1%) were identified, reworked by the subcontractor, and tracked to 100% closure a week ahead of schedule.
 
+<More thumb="on-site-ppe.jpg" title="My role, working with QC, and site photos" note="How the tracker stayed matched to the field">
+
+**My role:** My supervisor tasked me with building a system to identify and track every weld, using the shop and contract drawings and Excel.
+
+**Working with QC:** I built the tracker and map around what the QC inspector needed, checked in with him regularly so we agreed on which weld was which, and went out to look at welds in the field to keep the tracker matching reality.
+
 <Gallery section="site" />
+
+</More>
 
 ## Change Order Takeoffs: Pricing a Full Duct Redesign
 
 **The problem:** Between the issued-for-pricing (IFP) and issued-for-construction (IFC) drawings, the entire duct layout in four complex office rooms was redesigned and rerouted. Our price was based on the old design, so we needed to know exactly how much more material and equipment the new one required in order to submit a change order.
+
+**Result:** My totals fed directly into my supervisor's change order pricing, which came to several thousand dollars. The added ductwork and sheet metal was substantial, and the side-by-side takeoff made the cost of the redesign clear and defensible.
+
+<More thumb="/media/dynamic-systems/takeoff.svg" title="My role and how I did it" note="Counting every component, a 50+ symbol toolbox, and 3D model checks">
 
 **My role:** I did the takeoffs on both the old and new designs so my supervisor could price the difference.
 
@@ -58,13 +71,19 @@ Because the branches were identical, anyone could walk the line, count branches,
 - **Built it for the team, not just this job:** I fleshed out the symbol library and shared it with the PMs so they could reuse it on future takeoffs.
 - **Checked the 3D models, not just the drawings:** 2D plans don't show the full height of duct risers, which add significant sheet metal. I cross-referenced the 3D models so vertical runs weren't missed.
 
-**Result:** My totals fed directly into my supervisor's change order pricing, which came to several thousand dollars. The added ductwork and sheet metal was substantial, and the side-by-side takeoff made the cost of the redesign clear and defensible.
+</More>
 
 <span id="labor-tool"></span>
 
 ## Labor Reporting Tool: Automating a Recurring Report
 
 **The problem:** Project managers used labor charts to plan staffing and budget for the coming weeks. Making them meant pulling months of timecard data into Excel and building the charts by hand, about 2–3 hours per set, roughly once a month. The raw timecards list every employee under each job code, and the same person can show up under several trades in one week, sometimes with a different employee number for each.
+
+<Gallery section="labor-output" />
+
+**Result:** A 2–3 hour monthly task became a one-click update, saving an estimated ~12 hours over the internship. PMs used the output for staffing and budget decisions.
+
+<More thumb="labor-raw-data-mockup.png" title="How it works" note="The decision to automate, the script, and how it was specified">
 
 <Gallery section="labor-input" />
 
@@ -80,13 +99,17 @@ Because the branches were identical, anyone could walk the line, count branches,
 
 <Gallery section="labor-process" />
 
-<Gallery section="labor-output" />
-
-**Result:** A 2–3 hour monthly task became a one-click update, saving an estimated ~12 hours over the internship. PMs used the output for staffing and budget decisions.
+</More>
 
 ## Louver RFI: Catching a Spec That Wouldn't Work
 
 **The problem:** When the engineers issued revised drawings, they raised the louver's airflow (CFM) rating but left its pressure drop unchanged. Pushing more air through the same louver raises the pressure drop, so the scheduled numbers couldn't both be true. As drawn, the louver couldn't pass the new airflow at the listed pressure drop, and the fan would face more resistance than the system was designed for.
+
+**Result:** The engineer approved our proposed model. The problem was caught on paper during drawing review, before equipment was ordered or installed.
+
+**Why it matters:** Catching a spec conflict during review costs an email. Catching it after install costs a replacement louver, labor, and schedule.
+
+<More thumb="/media/dynamic-systems/louver.svg" title="My role and what I did" note="The drawing review, the RFI, and the vendor replacement">
 
 **My role:** I was tasked with reviewing the new drawings and caught the inconsistency.
 
@@ -96,6 +119,4 @@ Because the branches were identical, anyone could walk the line, count branches,
 - Worked with our vendor to find a replacement model that met the new airflow at an acceptable pressure drop, and proposed it in the RFI.
 - Had my supervisor review and approve the RFI before it went to the engineers.
 
-**Result:** The engineer approved our proposed model. The problem was caught on paper during drawing review, before equipment was ordered or installed.
-
-**Why it matters:** Catching a spec conflict during review costs an email. Catching it after install costs a replacement louver, labor, and schedule.
+</More>

@@ -3,7 +3,7 @@ import { getEntry } from 'astro:content';
 import Photo from './Photo.astro';
 
 // Shows every gallery item in the content file whose `section` matches.
-const { section = 'main', small = false } = Astro.props;
+const { section = 'main', small = false, wide = false, stack = false } = Astro.props;
 const slug = Astro.params.slug as string;
 const project = await getEntry('projects', slug);
 const folder = project?.data.imageFolder ?? slug;
@@ -11,7 +11,7 @@ const items = (project?.data.gallery ?? []).filter((g) => g.section === section)
 const cols = small ? 3 : Math.min(items.length, 3);
 ---
 {items.length > 0 && (
-  <div class="gallery" data-cols={cols}>
+  <div class:list={['gallery', { wide, stack }]} data-cols={cols}>
     {items.map((item) => (
       <figure>
         {item.placeholder || !item.src ? (

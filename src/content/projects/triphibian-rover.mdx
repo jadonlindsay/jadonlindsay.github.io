@@ -7,7 +7,11 @@ order: 1
 featured: true
 group: work
 keyMetric: ~17% drag reduction · Innovation Expo Top New Project
-atAGlance: 3 parametric flow studies (34 design points) · ~17% drag reduction from cone-height optimization · 4 frame revisions · flies, drives, and floats
+highlights:
+  - { title: "Flow simulation", metric: "3 studies, 34 design points, ~17% drag reduction", href: "#optimizing-the-wheel", image: flow-simulation.jpg }
+  - { title: "FEA and hand calculation", metric: "Factor of safety ~70, methods agree within 3%", href: "#verifying-the-front-cap-hand-calculation-vs-fea", image: cap-fea-3-von-mises.png, position: "30% 50%" }
+  - { title: "Design for assembly", metric: "4 frame revisions, built to come apart", href: "#designing-for-manufacturing--assembly", image: motor-assembly.jpg, position: "50% 45%" }
+  - { title: "3D model", metric: "Rotate the full assembly", href: "#model", image: full-assembly.png }
 facts:
   - { label: Role, value: "Systems Mechanical Design Lead (co-directing a team of 5)" }
   - { label: Program, value: "Aggies Create, Texas A&M (funded student innovation project)" }
@@ -32,22 +36,29 @@ gallery:
   - { src: wheel-candidate-2.png, section: wheel, fit: contain, alt: "CAD render of a green wheel candidate with curved vanes", caption: "Wheel candidate, not chosen" }
   - { src: paddle-wheel-render.png, section: wheel-final, fit: contain, alt: "CAD render of the final blue paddle wheel with angled blades", caption: "The final wheel" }
   - { src: equations-table.png, section: wheel-final, fit: contain, alt: "SOLIDWORKS equations table showing a dimension driven by other dimensions", caption: "The volume-locked model's equations" }
+  - { src: cap-fea-1-sketch-and-notch.png, section: cap-sketch, fit: contain, alt: "Sketch of the front cap with the force on one notch at 0.75 inches from the motor axis, motor specifications, and a close-up of the notch's shear plane", caption: "Notch location, load per notch, and the shear plane at the notch base." }
+  - { src: cap-fea-2-hand-calc.png, section: cap-calc, fit: contain, alt: "Handwritten calculation from motor power and speed to torque, force per notch and shear stress, ending with 0.35 MPa well below 23 MPa", caption: "Hand calculation: motor torque to shear stress at each notch." }
+  - { src: cap-fea-3-von-mises.png, section: cap-fea, fit: contain, alt: "FEA plot of von Mises stress on the front cap, highest at the notch roots", caption: "Von Mises stress (peak 0.50 MPa at the notch roots)" }
+  - { src: cap-fea-4-displacement.png, section: cap-fea, fit: contain, alt: "FEA plot of displacement on the front cap, largest at the screw ears", caption: "Displacement (max 0.38 µm)" }
+  - { src: cap-fea-5-fos.png, section: cap-fea, fit: contain, alt: "FEA plot of factor of safety on the front cap, lowest at the notches", caption: "Factor of safety (min ~70)" }
   - { placeholder: true, section: frame-revisions, caption: "Four printed frame revisions, side by side" }
-  - { placeholder: true, section: assembly, caption: "Assembly progress photos" }
+  - { placeholder: true, section: assembly-progress, caption: "Assembly progress photos" }
   - { src: expo-team.jpg, section: recognition, alt: "The TriPhi team in suits with their poster board and the first printed H-frame at the Innovation Expo", caption: "Fall 2026 Innovation Expo" }
 videos:
   - { src: flow-simulation, section: flow, alt: "Looping flow simulation around the paddle wheel", caption: "SOLIDWORKS Flow Simulation of the paddle wheel" }
-  - { src: rover-motor-wheel-assembly, section: manufacturing, alt: "CAD animation of the drive motor, front cap, frame tube, shaft and wheel coming together", caption: "Drive assembly sequence: motor to front cap, cap to frame tube, shaft, wheel." }
-  - { src: rover-prop-motor-assembly, section: prop-motors, alt: "CAD animation of a printed mount block, prop motor, screws and propeller coming together on the frame tube", caption: "Prop motor assembly: mount block to frame tube, motor, screws, prop." }
+  - { src: rover-motor-wheel-assembly, section: assembly, alt: "CAD animation of the drive motor, front cap, frame tube, shaft and wheel coming together", caption: "Drive assembly sequence: motor to front cap, cap to frame tube, shaft, wheel." }
+  - { src: rover-prop-motor-assembly, section: assembly, alt: "CAD animation of a printed mount block, prop motor, screws and propeller coming together on the frame tube", caption: "Prop motor assembly: mount block to frame tube, motor, screws, prop." }
 ---
 
-## The Problem
+## Concept
+
+### The Problem
 
 Drones burn most of their power just staying in the air, which means short missions. A bigger battery doesn't fix it, because the added weight eats most of the gain. A drone that could *drive* when it doesn't need to fly could stay out far longer, which matters most where people shouldn't go: extreme search and rescue, or inspecting unstable construction sites. More runtime means a slower, more careful search.
 
 A classmate pitched the concept to Aggies Create, and it was selected for funding out of several pitches. We started with the idea and nothing else. No reference design existed for a vehicle that flies, drives, *and* floats, so every part of it had to be worked out from first principles.
 
-## Getting It to Drive
+<More thumb="tank-concept.png" title="Getting It to Drive" note="Skis on stilts, tank treads, or foam wheels">
 
 We explored three ways to move on the ground:
 
@@ -57,19 +68,31 @@ We explored three ways to move on the ground:
 
 <Gallery section="drive" />
 
-## The Frame
+</More>
+
+<More thumb="h-frame-concept.png" title="The Frame" note="A custom H-frame instead of the standard X-frame">
 
 Running a drive axle through the body meant a custom **H-frame** instead of the standard X-frame. That ruled out off-the-shelf frames, so every structural part had to be designed and 3D printed in-house. The rover drives and steers on two motors using differential wheel speed.
 
 <Gallery section="frame" />
 
-## Sizing for Buoyancy
+</More>
 
-Closed-cell foam wheels keep the rover afloat. Neutral buoyancy for a 2 kg design load meant about 2 L of displaced water, so I targeted about 4 L total (61 in³ per wheel) to keep the wheels only partly submerged. The final rover is about 0.9 kg, so the wheels ride roughly 45% submerged, with plenty of margin.
+## Engineering Analysis
 
-## Optimizing the Wheel
+### Optimizing the Wheel
 
 A teammate's Ansys study picked the best wheel shape out of four candidates. My job was to refine it without losing buoyancy.
+
+I ran three staged parametric studies, locking in each result before starting the next:
+
+**2. Cone height (0.1"–2.4", 13 design points).** A taller cone streamlines the wheel but takes volume from the cylinder, so efficiency drops at both extremes. Drag bottomed out around 1", **~17% lower than the worst case** (0.1").
+
+<Chart data="rover-cone-height" featured />
+
+<Video section="flow" />
+
+<More thumb="wheel-candidate-2.png" title="Method and the other two studies" note="The volume-locked model, draft angle, and paddle depth">
 
 <Gallery section="wheel" />
 
@@ -80,41 +103,78 @@ The wheel has three sections: a solid cylinder at the center, a drafted cone on 
 
 <Gallery section="wheel-final" />
 
-<Video section="flow" />
-
-I ran three staged parametric studies, locking in each result before starting the next:
-
 **1. Draft angle (0°–60°, 7 design points).** Drag fell steadily as the angle increased, but every added degree cut the cone's volume, forcing a thicker cylinder elsewhere to keep the wheel buoyant. I settled on 40° as the balance between drag and volume.
 
 <Chart data="rover-draft-angle" />
-
-**2. Cone height (0.1"–2.4", 13 design points).** A taller cone streamlines the wheel but takes volume from the cylinder, so efficiency drops at both extremes. Drag bottomed out around 1", **~17% lower than the worst case** (0.1").
-
-<Chart data="rover-cone-height" featured />
 
 **3. Paddle depth (0.2"–1.5", 14 design points).** Deeper paddles push more water but add drag almost linearly. 1.5" paddles had 56% more drag than 0.5". Drag alone would favor the shallowest blade, so this was a thrust-vs-drag tradeoff: I chose **0.5"**, estimated to give enough thrust for a slow-moving rover at only ~15% more drag than the 0.2" minimum. Real thrust will be confirmed in a tank test.
 
 <Chart data="rover-paddle-depth" />
 
+</More>
+
+### Verifying the Front Cap: Hand Calculation vs. FEA
+
+**The question.** The front cap is 3D-printed PLA, and the motor's entire torque passes through four small square notches (0.1" × 0.1" base, 0.05" tall) that seat into holes in the frame tube. With a 900 W brushless motor behind it, would those notches shear off?
+
+<Gallery section="cap-fea" stack />
+
+**Result.** The PLA notches won't shear at maximum motor torque: a factor of safety of roughly 44–66 by hand and about 70 by FEA, with the two methods agreeing on the load path within 3%.
+
+**Scope.** This check assumes the motor drives the wheel directly, with no gearbox. The planned 150:1–400:1 reduction (see What's Next) changes that: if the gearbox mounts to this cap, the cap must react roughly that multiple of the motor torque, which would push the notch stresses past PLA's yield strength. The geared version will need a stronger cap design and a new check.
+
+<More thumb="cap-fea-2-hand-calc.png" position="50% 18%" title="Full calculation and model checks" note="Hand calculation, FEA setup, and how the two compare">
+
+<Gallery section="cap-sketch" wide />
+
+**Hand calculation.** I found the motor's maximum torque two ways: from power and top speed, T = P/ω = 900 W ÷ 5,236 rad/s = 0.172 N·m, and from its torque constant, Kt × I_max = 0.00415 N·m/A × 41 A = 0.170 N·m. Spread over four notches at 0.75" (19 mm) from the motor axis, that's 2.26 N per notch. At the notch base I checked direct shear (0.35 MPa), bearing (0.70 MPa), and bending (0.53 MPa), for a combined stress of 0.80 MPa, against a PLA yield strength of 35–40 MPa.
+
+<Gallery section="cap-calc" />
+
+**FEA.** In SOLIDWORKS Simulation I defined a custom printed-PLA material (E = 2,500 MPa, ν = 0.35, Sy = 35 MPa), fixed the loaded face of each notch, and applied the 0.17 N·m motor torque to the motor's screw holes. Peak von Mises stress was 0.50 MPa, at the notch roots where the stress concentrates. The cap twisted by just 0.38 µm (about 0.001°), and the minimum factor of safety was about 70.
+
+**Checking the model against the math.** I didn't take the FEA on faith:
+
+- **Load path:** the reaction at each notch was 2.29 N in FEA vs. 2.26 N by hand, within 1.5%. The total reaction moment came out at 0.174 N·m against 0.170 N·m applied, within 2.6%, and the reaction forces summed to about zero, confirming a pure twisting load.
+- **Conservatism:** the hand-calc stress (0.80 MPa) sits above the FEA peak (0.50 MPa), so the hand method errs on the safe side.
+
+</More>
+
+<More thumb="paddle-wheel-render.png" title="Sizing for Buoyancy" note="61 in³ per wheel to keep the rover afloat">
+
+Closed-cell foam wheels keep the rover afloat. Neutral buoyancy for a 2 kg design load meant about 2 L of displaced water, so I targeted about 4 L total (61 in³ per wheel) to keep the wheels only partly submerged. The final rover is about 0.9 kg, so the wheels ride roughly 45% submerged, with plenty of margin.
+
+</More>
+
 ## Designing for Manufacturing & Assembly
 
-<Video section="manufacturing" />
+<Video section="assembly" />
+
+<More thumb="motor-assembly.jpg" position="50% 45%" title="Drive motor mounting" note="Getting the motor to stay put, and built to come apart">
 
 **Getting the motor to stay put.** A drive motor pushes back on whatever holds it: when it turns the wheel, the same torque tries to spin the motor body the other way. A motor held only by friction inside the tube would just spin itself, and without something behind it, the wheel loads would push it along the tube.
 
-**Working out what couldn't work.** The design came from ruling options out. Inserting the motor from the far end of the tube was out: once it was inside, there was no way to reach in and fasten it. That left the front. The tube got a **fixed rear backing** inside it for the motor to seat against, and a removable **front cap**: two screws fasten the motor's face to the cap, and four more fasten the cap to the tube end. The backing stops the motor sliding, and the screwed-on cap carries the motor's torque into the frame instead of relying on friction. Everything is fastened from the outside, which set the assembly order: motor onto cap, motor and cap into the tube, shaft, then wheel.
+**Working out what couldn't work.** The design came from ruling options out. Inserting the motor from the far end of the tube was out: once it was inside, there was no way to reach in and fasten it. That left the front. The tube got a **fixed rear backing** inside it for the motor to seat against, and a removable **front cap**: the motor's face screws to the cap, and the cap screws to the tube end. The backing stops the motor sliding, and four square notches on the cap seat into matching holes in the tube, carrying the motor's torque into the frame instead of relying on friction. Everything is fastened from the outside, which set the assembly order: motor onto cap, motor and cap into the tube, shaft, then wheel.
 
 **Built to come apart.** The same sequence runs in reverse: pull the wheel, remove four screws, and slide the motor out. Swapping a failed motor or testing a design change doesn't mean rebuilding the frame. (The animation simplifies the drive shaft to a plain rod; the real shaft has a non-round profile so it grips the wheel.)
 
-**The same problem, on the prop motors.**
+</More>
 
-<Video section="prop-motors" />
+<More thumb="prop-assembly.jpg" position="55% 40%" title="Prop motor mounting" note="The same problem, solved with a printed mount block">
+
+**The same problem, on the prop motors.**
 
 Each prop motor has to be fastened from underneath, but again there's no way to reach inside the frame tube. So each motor sits on a printed **mount block**: the motor fastens to the block, where its underside is reachable, and the block screws to the side of the tube from the outside. Because the motor screws go in upside down, from the bottom of the block, I recessed their heads to sit flush with the block's flat mounting face; otherwise they would stick out past it. The block does a second job: it sets the prop height. Changing the block's height raises or lowers the prop to clear the wheel without touching the tube design.
 
+</More>
+
+<More thumb="full-assembly.png" title="Designing for the printer" note="Parts split, oriented, and shaped for FDM printing">
+
 **Designing for the printer.** Every part had to print reliably on an FDM printer, so I split large parts to fit the print bed, oriented them for strength, added fillets, and avoided steep overhangs and unsupported features.
 
-## Iterating the Frame
+</More>
+
+### Iterating the Frame
 
 - **Rev 1:** The wheel motors didn't fit, so I resized the drive bays.
 - **Rev 2:** It was too short, so the props clipped. I raised the rotor height.
@@ -123,21 +183,23 @@ Each prop motor has to be fastened from underneath, but again there's no way to 
 
 <Gallery section="frame-revisions" />
 
-## Leading the Team
+## Team and What's Next
+
+### Leading the Team
 
 I co-direct the mechanical side: setting weekly priorities, assigning tasks across the team, and keeping the project on track against our Gantt schedule. I owned the tube frame design myself and delegated the electrical housing to a teammate, then reviewed that design to make sure it integrated with the frame.
 
-## Recognition
+### Recognition
 
 At the Fall 2026 Innovation Expo we presented our full design process and the first printed H-frame, and won **Top New Project**.
 
 <Gallery section="recognition" />
 
-## What's Next
+### What's Next
 
 - **Drive gearing:** The wheel motors spin far too fast to drive the wheels directly; at that speed the blade tips would cavitate in water. Paddle wheels work at roughly 100–300 rpm, so we're working out a reduction of about 150:1 to 400:1.
 - **Heat:** Sealing the body for water traps motor heat, and managing that is our next design focus.
 - **Sealing:** Wire pass-throughs from the motors to the battery will be sealed with epoxy.
 - **Water test:** Measure actual paddle thrust in a tank test.
 
-<Gallery section="assembly" />
+<Gallery section="assembly-progress" />

@@ -17,6 +17,9 @@ summary: Short description         # Used only by small cards (group: other)
 link: ""                           # Optional. Makes the card go here instead of its own page
 imageFolder: ""                    # Optional. Use another project's photo folder
 
+highlights:                        # Optional summary cards that jump to a section
+  - { title: "Key skill", metric: "The result to show", href: "#first-section", image: photo.jpg }
+
 facts:                             # Label and value pairs at the top of the page
   - { label: Role, value: "What you did" }
   - { label: Tools, value: "SOLIDWORKS, FDM printing" }
@@ -44,5 +47,11 @@ Write in plain text. Each "##" heading is added to the page's "On this page" men
 <Gallery section="main" />
 
 <Video section="main" />
+
+<More title="Extra detail" note="One short line about what's inside">
+
+Supporting text and photos stay one click away.
+
+</More>
 
 <Chart data="my-chart-file" />

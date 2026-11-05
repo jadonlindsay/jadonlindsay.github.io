@@ -6,6 +6,7 @@ import Gallery from '../components/Gallery.astro';
 import Video from '../components/Video.astro';
 import Chart from '../components/Chart.astro';
 import WeldDiagram from '../components/WeldDiagram.astro';
+import More from '../components/More.astro';
 
 // Every project gets a page unless it only links elsewhere or is a small card.
 export async function getStaticPaths() {
@@ -18,8 +19,8 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const d = project.data;
 const { Content, headings } = await render(project);
-const sections = headings.filter((h) => h.depth === 2).map((h) => ({ slug: h.slug, text: h.text }));
-if (d.model3d) sections.push({ slug: 'model', text: 'Explore the 3D Model' });
+const sections = headings.filter((h) => h.depth <= 3).map((h) => ({ slug: h.slug, text: h.text, depth: h.depth }));
+if (d.model3d) sections.push({ slug: 'model', text: 'Explore the 3D Model', depth: 2 });
 const folder = d.imageFolder ?? project.id;
 const hero = d.heroImage || d.cardImage;
 
@@ -34,6 +35,22 @@ const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
       <a class="back" href="/#work"><span aria-hidden="true">&larr;</span> All work</a>
       <h1>{d.title}</h1>
       {d.tagline && <p class="lede">{d.tagline}</p>}
+      {d.highlights.length > 0 && (
+        <nav class="highlights" aria-label="Highlights">
+          {d.highlights.map((h) => (
+            <a href={h.href}>
+              {h.image && (h.image.startsWith('/')
+                ? <div class="photo" style="aspect-ratio: 8 / 5"><img src={h.image} alt="" width="320" height="200" /></div>
+                : <Photo {folder} file={h.image} alt="" ratio="8 / 5" sizes="(max-width: 960px) 50vw, 290px" position={h.position} />)}
+              <div class="hl-text">
+                <strong>{h.title}</strong>
+                <span>{h.metric}</span>
+                <span class="go">See details <span aria-hidden="true">&darr;</span></span>
+              </div>
+            </a>
+          ))}
+        </nav>
+      )}
       {d.facts.length > 0 && (
         <dl class="facts">
           {d.facts.map((f) => <div><dt>{f.label}</dt><dd>{f.value}</dd></div>)}
@@ -45,7 +62,6 @@ const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
           <Photo {folder} file={hero} alt={(d.heroImage ? d.heroAlt : d.cardAlt) ?? d.title} fit={d.heroImage ? 'cover' : d.cardFit} ratio="16 / 9" sizes="(max-width: 1240px) 100vw, 1180px" eager />
         </div>
       )}
-      {d.model3d && <div class="actions"><a class="btn btn-plain" href="#model">Explore the 3D model</a></div>}
     </div>
   </header>
 
@@ -53,11 +69,11 @@ const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
     {sections.length > 2 && (
       <nav class="toc" aria-label="On this page">
         <p>On this page</p>
-        <ul>{sections.map((s) => <li><a href={`#${s.slug}`}>{s.text}</a></li>)}</ul>
+        <ul>{sections.map((s) => <li class={`d${s.depth}`}><a href={`#${s.slug}`}>{s.text}</a></li>)}</ul>
       </nav>
     )}
     <article class="prose">
-      <Content components={{ Gallery, Video, Chart, WeldDiagram }} />
+      <Content components={{ Gallery, Video, Chart, WeldDiagram, More }} />
       {d.model3d && (
         <section id="model">
           <h2>Explore the 3D Model</h2>
