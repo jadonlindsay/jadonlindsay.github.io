@@ -38,8 +38,19 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
         <a class="btn btn-plain" href={`mailto:${site.email}`}>Email</a>
       </div>
     </div>
-    <div class="hero-pic">
-      <Photo folder="home" file="headshot.jpg" alt="Portrait of Jadon Lindsay in a navy suit" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" eager />
+    <div class="hero-pic carousel" data-carousel aria-roledescription="carousel" aria-label="Photos of Jadon">
+      <div class="slides">
+        <div class="slide is-on" aria-roledescription="slide" aria-label="1 of 2">
+          <Photo folder="home" file="headshot.jpg" alt="Portrait of Jadon Lindsay in a navy suit" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" eager />
+        </div>
+        <div class="slide" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true">
+          <Photo folder="home" file="semiconductor-summit.jpg" alt="Jadon Lindsay giving a thumbs up in front of the Texas Semiconductor Summit backdrop" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" position="40% 50%" />
+        </div>
+      </div>
+      <div class="dots">
+        <button type="button" aria-label="Show photo 1" aria-pressed="true"></button>
+        <button type="button" aria-label="Show photo 2" aria-pressed="false"></button>
+      </div>
     </div>
   </section>
 
@@ -139,6 +150,24 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
 
 
 <script>
+  // Hero carousel: crossfades every 5 s, pauses while pointed at or focused, stops for good once a dot is used.
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+    const slides = [...root.querySelectorAll<HTMLElement>('.slide')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('.dots button')];
+    let at = 0, held = false, stopped = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const show = (i: number) => {
+      at = (i + slides.length) % slides.length;
+      slides.forEach((s, k) => { s.classList.toggle('is-on', k === at); s.setAttribute('aria-hidden', String(k !== at)); });
+      dots.forEach((d, k) => d.setAttribute('aria-pressed', String(k === at)));
+    };
+    dots.forEach((d, k) => d.addEventListener('click', () => { stopped = true; show(k); }));
+    root.addEventListener('pointerenter', () => { held = true; });
+    root.addEventListener('pointerleave', () => { held = false; });
+    root.addEventListener('focusin', () => { held = true; });
+    root.addEventListener('focusout', () => { held = false; });
+    setInterval(() => { if (!stopped && !held && !document.hidden) show(at + 1); }, 5000);
+  });
+
   if (matchMedia('(hover: none)').matches) {
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.target.classList.toggle('reveal', e.isIntersecting)),

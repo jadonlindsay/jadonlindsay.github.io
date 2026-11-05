@@ -83,6 +83,14 @@ a:hover > .go span, a:hover > * > .go span, a.go:hover span { transform: transla
 /* Home: hero */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 32px clamp(32px, 6vw, 88px); align-items: center; padding-block: clamp(32px, 7vh, 72px); }
 .hero .lede { margin-top: 24px; }
+.carousel .slides { position: relative; aspect-ratio: 4 / 5; }
+.carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s var(--ease); }
+.carousel .slide.is-on { opacity: 1; }
+.carousel .slide .photo { height: 100%; }
+.carousel .dots { display: flex; justify-content: center; gap: 4px; margin-top: 8px; }
+.carousel .dots button { width: 36px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+.carousel .dots button::before { content: ""; display: block; height: 2px; margin-inline: 4px; background: #cfc9c2; transition: background-color 0.3s var(--ease); }
+.carousel .dots button[aria-pressed="true"]::before { background: var(--accent); }
 .meta { margin-top: 10px; font-weight: 700; }
 .meta .gpa { color: var(--accent); font-weight: 900; }
 
