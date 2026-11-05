@@ -31,7 +31,7 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
     <div class="hero-copy">
       <h1>{site.headline}</h1>
       <p class="lede">{site.subline}</p>
-      <p class="meta">{site.meta}</p>
+      <p class="meta">{site.meta.split(' · ').map((part, i) => <>{i > 0 && ' · '}{part.includes('GPA') ? <span class="gpa">{part}</span> : part}</>)}</p>
       <div class="actions">
         <a class="btn" href={site.resume} target="_blank" rel="noopener">Resume (PDF)</a>
         <a class="btn btn-plain" href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>

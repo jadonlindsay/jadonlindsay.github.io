@@ -84,6 +84,7 @@ a:hover > .go span, a:hover > * > .go span, a.go:hover span { transform: transla
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 32px clamp(32px, 6vw, 88px); align-items: center; padding-block: clamp(32px, 7vh, 72px); }
 .hero .lede { margin-top: 24px; }
 .meta { margin-top: 10px; font-weight: 700; }
+.meta .gpa { color: var(--accent); font-weight: 900; }
 
 /* Home: bands */
 .band { padding-block: clamp(56px, 9vh, 96px); }
