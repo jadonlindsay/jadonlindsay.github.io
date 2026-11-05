@@ -38,6 +38,7 @@ gallery:
 videos:
   - { src: flow-simulation, section: flow, alt: "Looping flow simulation around the paddle wheel", caption: "SOLIDWORKS Flow Simulation of the paddle wheel" }
   - { src: rover-motor-wheel-assembly, section: manufacturing, alt: "CAD animation of the drive motor, front cap, frame tube, shaft and wheel coming together", caption: "Drive assembly sequence: motor to front cap, cap to frame tube, shaft, wheel." }
+  - { src: rover-prop-motor-assembly, section: prop-motors, alt: "CAD animation of a printed mount block, prop motor, screws and propeller coming together on the frame tube", caption: "Prop motor assembly: mount block to frame tube, motor, screws, prop." }
 ---
 
 ## The Problem
@@ -104,6 +105,12 @@ I ran three staged parametric studies, locking in each result before starting th
 **Working out what couldn't work.** The design came from ruling options out. Inserting the motor from the far end of the tube was out: once it was inside, there was no way to reach in and fasten it. That left the front. The tube got a **fixed rear backing** inside it for the motor to seat against, and a removable **front cap**: two screws fasten the motor's face to the cap, and four more fasten the cap to the tube end. The backing stops the motor sliding, and the screwed-on cap carries the motor's torque into the frame instead of relying on friction. Everything is fastened from the outside, which set the assembly order: motor onto cap, motor and cap into the tube, shaft, then wheel.
 
 **Built to come apart.** The same sequence runs in reverse: pull the wheel, remove four screws, and slide the motor out. Swapping a failed motor or testing a design change doesn't mean rebuilding the frame. (The animation simplifies the drive shaft to a plain rod; the real shaft has a non-round profile so it grips the wheel.)
+
+**The same problem, on the prop motors.**
+
+<Video section="prop-motors" />
+
+Each prop motor has to be fastened from underneath, but again there's no way to reach inside the frame tube. So each motor sits on a printed **mount block**: the motor fastens to the block, where its underside is reachable, and the block screws to the side of the tube from the outside. Because the motor screws go in upside down, from the bottom of the block, I recessed their heads to sit flush with the block's flat mounting face; otherwise they would stick out past it. The block does a second job: it sets the prop height. Changing the block's height raises or lowers the prop to clear the wheel without touching the tube design.
 
 **Designing for the printer.** Every part had to print reliably on an FDM printer, so I split large parts to fit the print bed, oriented them for strength, added fillets, and avoided steep overhangs and unsupported features.
 
