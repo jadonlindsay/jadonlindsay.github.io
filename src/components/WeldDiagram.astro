@@ -1,30 +1,8 @@
 ---
-// Generic illustration of the weld ID scheme: a header with branches. Not a real drawing.
-const branches = 6, weldsShown = 3;
-const W = 760, H = 330, left = 70, gap = 112, headerY = 62, pitch = 74;
-const xOf = (i: number) => left + 30 + i * gap;
-const pad = (n: number) => String(n).padStart(2, '0');
+// Interactive illustration of the weld ID scheme: a header with branches. Not a real drawing.
+// The page is built from hairline/weld-map.js.
 ---
 <figure class="weld" data-ui>
-  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="A horizontal header pipe with six branches. Welds along the header are labeled H-01, H-02 and so on. Welds along each branch are labeled by branch number and weld number, such as 1-01 and 2-03.">
-    <rect class="pipe" x={left - 40} y={headerY - 11} width={W - 2 * (left - 40)} height="22" />
-    {Array.from({ length: branches }, (_, i) => (
-      <g>
-        <rect class="pipe" x={xOf(i) - 7} y={headerY + 11} width="14" height={H - headerY - 34} />
-        <circle class="w head" cx={xOf(i)} cy={headerY} r="7" />
-        <text class="id h" x={xOf(i)} y={headerY - 22} text-anchor="middle">H-{pad(i + 1)}</text>
-        {i < 2 ? (
-          Array.from({ length: weldsShown }, (_, k) => (
-            <g>
-              <circle class="w" cx={xOf(i)} cy={headerY + 50 + k * pitch} r="6" />
-              <text class="id" x={xOf(i) + 14} y={headerY + 55 + k * pitch}>{i + 1}-{pad(k + 1)}</text>
-            </g>
-          ))
-        ) : (
-          Array.from({ length: weldsShown }, (_, k) => <circle class="w dim" cx={xOf(i)} cy={headerY + 50 + k * pitch} r="6" />)
-        )}
-      </g>
-    ))}
-  </svg>
-  <figcaption>The ID scheme, simplified. A generic illustration, not a project drawing.</figcaption>
+  <iframe src="/media/dynamic-systems/weld-map.html" title="A header pipe with six identical branches. Point at a weld to read its ID, such as H-03 or 5-02." loading="lazy"></iframe>
+  <figcaption>The ID scheme, simplified. Point at a weld, or tap it, to read its ID. A generic illustration, not a project drawing.</figcaption>
 </figure>

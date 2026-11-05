@@ -197,13 +197,7 @@ video.loop { width: 100%; background: #fff; }
 .chart .dot.on { fill: var(--accent); stroke: #fff; stroke-width: 2; }
 .chart .marker { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 5 5; }
 .chart .marker-label { fill: var(--accent); font: 700 14px var(--font); }
-.weld svg { width: 100%; height: auto; }
-.weld .pipe { fill: #c9c4bc; }
-.weld .w { fill: var(--accent); }
-.weld .w.head { fill: var(--ink); }
-.weld .w.dim { fill: var(--muted); opacity: 0.45; }
-.weld .id { fill: var(--ink); font: 700 15px var(--font); }
-.weld .id.h { fill: var(--ink); }
+.weld iframe { display: block; width: 100%; aspect-ratio: 400 / 216; border: 0; }
 
 .next { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding: 36px var(--m); background: var(--accent); color: #fff; text-decoration: none; transition: background-color 0.25s var(--ease); }
 .next:hover { background: var(--accent-hover); }
