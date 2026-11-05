@@ -10,6 +10,7 @@
 const { Cam, fit, facing, prism, proj, rings, seg, tset, tval, tween, tdone, disposer, mk, pointer, put, register, solid } = HL;
 
 const N = 8, BW = 9, GAP = 15, SW = 150, SD = 96, TH = 2.4;
+// At rest the whole chart is bright: it is what the tool makes, in one click, from the sheets under it.
 const REST = [10, 16, 13, 27, 44, 36, 21, 12], MARK = 4, STEP = 45;
 const X = (i) => 18 + i * GAP;
 
@@ -48,7 +49,7 @@ function mount({ stage, svg, read }, value) {
     return moving;
   });
   bag.add(B.unregister);
-  bars[MARK].el.sil.classList.add("hi");
+  bars.forEach((b) => b.el.sil.classList.add("hi"));
 
   /** The bar whose resting column is nearest the pointer's x, if the pointer is near the chart at all. */
   function hit([x, y]) {
@@ -68,7 +69,7 @@ function mount({ stage, svg, read }, value) {
       const d = a < 0 ? 0 : Math.abs(b.i - a);
       const boost = a < 0 ? 0 : rise * Math.max(0, 1 - d / 3);
       tset(b.t, REST[b.i] + boost, now, d * STEP);
-      b.el.sil.classList.toggle("hi", a < 0 ? b.i === MARK : b.i === a);
+      b.el.sil.classList.toggle("hi", a < 0 || b.i === a);
     }
     read.textContent = a < 0 ? "rest" : `wk ${String(a + 1).padStart(2, "0")}`;
     B.wake();

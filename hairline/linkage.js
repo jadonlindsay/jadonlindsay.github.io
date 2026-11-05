@@ -10,7 +10,7 @@
 const { Cam, fit, facing, hull, open, poly, prism, proj, rings, run, ringAt, tset, tval, tween, tdone, disposer, mk, pointer, put, register, solid } = HL;
 
 const W = 130, D = 92, BT = 5, WH = 74, GX = 78, GY = 56, GR = 26, TEETH = 32;
-const HAND = [94, 30, 46], TOP = [108, 12, 74], MARK = "balloons";
+const HAND = [94, 30, 46], TOP = [108, 12, 74], MARK = "gear"; // the crown gear is what turned the 2D toy into a 3D, gear-driven one
 
 function mount({ stage, svg, read }, value) {
   const bag = disposer();

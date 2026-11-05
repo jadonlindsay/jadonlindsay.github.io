@@ -11,7 +11,8 @@
 const { Cam, fit, hull, poly, proj, rrect, rings, facing, prism, tset, tval, tween, tdone, disposer, mk, pointer, put, register, solid } = HL;
 
 const AX = 64, AY = 34, RA = 4, RW = 19, WW = 15, ZA = RW, PX = 30, PR = 20, SEG = 40;
-const MARK = "prop 2";
+// At rest the four wheels are bright: their shape is where the ~17% drag reduction came from.
+const isMark = (p) => p.name.startsWith("wheel");
 
 function mount({ stage, svg, read }, value) {
   const bag = disposer();
@@ -74,7 +75,7 @@ function mount({ stage, svg, read }, value) {
   bag.add(B.unregister);
 
   const byName = (s) => parts.find((p) => p.name === s);
-  byName(MARK).el.sil.classList.add("hi");
+  parts.filter(isMark).forEach((p) => p.el.sil.classList.add("hi"));
   function hit([x, y]) {
     let best = null, bd = 26;
     for (const p of parts) { const d = Math.hypot(p.q[0] - x, p.q[1] - y); if (d < bd) { bd = d; best = p; } }
@@ -87,7 +88,7 @@ function mount({ stage, svg, read }, value) {
     for (const p of parts) {
       const d = a ? Math.hypot(p.x - a.x, p.y - a.y) : 0;
       tset(p.t, a ? (p === a ? lift : Math.max(0, lift * 0.3 * (1 - d / 60))) : 0, now, a ? (d / 30) * 45 : 0);
-      p.el.sil.classList.toggle("hi", a ? p === a : p.name === MARK);
+      p.el.sil.classList.toggle("hi", a ? p === a : isMark(p));
     }
     read.textContent = a ? a.name : "rest";
     B.wake();
