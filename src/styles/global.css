@@ -104,6 +104,36 @@ a:hover > .go span, a:hover > * > .go span, a.go:hover span { transform: transla
 .mini-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 620px)); gap: 20px; }
 .mini { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 20px; align-items: center; padding: 16px; background: var(--card); }
 .mini .role { margin: 2px 0 8px; color: var(--muted); font-size: var(--small); }
+
+/* Figure plates: a line drawing on each home card, swapped for the photo on hover or, on touch screens, mid-screen. */
+.plate { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #f2f0ed; border-bottom: 1px solid #e2ded9;
+  --hl-plate: #f2f0ed; --hl-edge: #9e9891; --hl-mid: #bdb7b0; --hl-lo: #dcd7d1; --hl-hi: var(--accent); }
+.plate-mini { aspect-ratio: 4 / 3; border: 1px solid #e2ded9; }
+.plate .fig { position: absolute; inset: 14% 10% 9%; width: 80%; height: 77%; transition: transform 0.6s var(--ease); }
+.plate-mini .fig { inset: 8%; width: 84%; height: 84%; }
+.plate .fig :is(path, polygon, ellipse, line) { fill: var(--hl-plate); stroke: var(--hl-mid); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.plate .fig .nf { fill: none; }
+.plate .fig .fo { stroke: none; }
+.plate .fig .sil { stroke: var(--hl-edge); }
+.plate .fig .lo { stroke: var(--hl-lo); }
+.plate .fig .hi { stroke: var(--hl-hi); stroke-width: 1.6; }
+.plate .fig .dot { stroke: none; fill: var(--hl-hi); }
+.plate .fig .dot.m { fill: var(--hl-edge); }
+.plate .fig .dot.off { fill: var(--hl-lo); }
+.plate .fig .ghost path { fill: none; }
+.fig-no, .fig-name { position: absolute; top: 12px; z-index: 1; color: var(--muted); font: 500 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0.06em; }
+.fig-no { left: 14px; }
+.fig-name { right: 14px; }
+.plate-photo { position: absolute; inset: 0; z-index: 2; opacity: 0; transition: opacity 0.45s var(--ease); }
+.plate-photo .photo { height: 100%; }
+/* The rover's CAD render is mirrored so it faces the same way as its drawing. */
+.card-lead .plate-photo img { transform: scaleX(-1); }
+.card:hover .plate .fig { transform: translateY(-4px); }
+@media (hover: hover) { .card:hover .plate-photo { opacity: 1; } }
+/* On touch screens there is no hover: the photo shows while the card sits in the middle of the screen. */
+@media (hover: none) { .plate.reveal .plate-photo { opacity: 1; } }
+.card-lead .plate { aspect-ratio: 16 / 10; border-bottom: 0; border-right: 1px solid #e2ded9; }
+@media (max-width: 900px) { .card-lead .plate { border-right: 0; border-bottom: 1px solid #e2ded9; } }
 .about { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 8fr); gap: 16px 40px; }
 
 .contact { padding-block: clamp(56px, 10vh, 104px); background: var(--ink); color: var(--bg); }

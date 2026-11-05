@@ -4,6 +4,19 @@ import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import site from '../../site.config.json';
 import { Content as About } from '../content/about.md';
+// Line-figure thumbnails for the cards, drawn with Hairline (sources in hairline/).
+import rover from '../figures/rover.svg?raw';
+import linkage from '../figures/linkage.svg?raw';
+import labor from '../figures/labor.svg?raw';
+import weld from '../figures/weld-map.svg?raw';
+import trouble from '../figures/trouble.svg?raw';
+const figs: Record<string, { svg: string; no: string; name: string }> = {
+  'triphibian-rover': { svg: rover, no: 'FIG 01', name: 'CHASSIS' },
+  'linkage-toy': { svg: linkage, no: 'FIG 02', name: 'DIORAMA' },
+  'labor-reporting-tool': { svg: labor, no: 'FIG 03', name: 'HOURS / WEEK' },
+  'dynamic-systems': { svg: weld, no: 'FIG 04', name: 'WELD MAP' },
+  'trouble-game': { svg: trouble, no: 'FIG 05', name: 'BOARD' },
+};
 
 const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const work = all.filter((p) => p.data.group === 'work' && p.data.featured);
@@ -35,7 +48,11 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
       <h2 id="work-h">Featured work</h2>
       {lead && (
         <a class="card card-lead" href={hrefOf(lead)}>
-          <Photo folder={folderOf(lead)} file={lead.data.cardImage!} alt={lead.data.cardAlt ?? ''} fit={lead.data.cardFit} ratio="16 / 9" sizes="(max-width: 900px) 100vw, 700px" />
+          <div class="plate">
+            <span class="fig-no">{figs[lead.id].no}</span><span class="fig-name">{figs[lead.id].name}</span>
+            <Fragment set:html={figs[lead.id].svg} />
+            <div class="plate-photo"><Photo folder={folderOf(lead)} file={lead.data.cardImage!} alt={lead.data.cardAlt ?? ''} fit={lead.data.cardFit} ratio="16 / 9" sizes="(max-width: 900px) 100vw, 700px" /></div>
+          </div>
           <div class="card-text">
             <h3>{lead.data.title}</h3>
             {lead.data.tagline && <p class="lede">{lead.data.tagline}</p>}
@@ -48,7 +65,11 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
       <div class="cards">
         {rest.map((p) => (
           <a class="card" href={hrefOf(p)}>
-            <Photo folder={folderOf(p)} file={p.data.cardImage!} alt={p.data.cardAlt ?? ''} fit={p.data.cardFit} ratio="16 / 9" sizes="(max-width: 700px) 100vw, 33vw" />
+            <div class="plate">
+              <span class="fig-no">{figs[p.id].no}</span><span class="fig-name">{figs[p.id].name}</span>
+              <Fragment set:html={figs[p.id].svg} />
+              <div class="plate-photo"><Photo folder={folderOf(p)} file={p.data.cardImage!} alt={p.data.cardAlt ?? ''} fit={p.data.cardFit} ratio="16 / 9" sizes="(max-width: 700px) 100vw, 33vw" /></div>
+            </div>
             <div class="card-text">
               <h3>{p.data.title}</h3>
               <p class="role">{p.data.role}</p>
@@ -83,7 +104,7 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
         <div class="mini-list">
           {other.map((p) => (
             <div class="mini">
-              <Photo folder={folderOf(p)} file={p.data.cardImage!} alt={p.data.cardAlt ?? ''} fit={p.data.cardFit} ratio="4 / 3" sizes="200px" />
+              <div class="plate plate-mini"><Fragment set:html={figs[p.id].svg} /></div>
               <div>
                 <h3>{p.data.title}</h3>
                 <p class="role">{p.data.role}</p>
@@ -115,3 +136,14 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
     </div>
   </section>
 </Base>
+
+
+<script>
+  if (matchMedia('(hover: none)').matches) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle('reveal', e.isIntersecting)),
+      { rootMargin: '-40% 0px -40% 0px' },
+    );
+    document.querySelectorAll('.plate:has(.plate-photo)').forEach((el) => io.observe(el));
+  }
+</script>
