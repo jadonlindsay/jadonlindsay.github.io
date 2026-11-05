@@ -15,7 +15,7 @@ const {
 } = HL;
 
 const N = 6, WELDS = 3, G = 40, PITCH = 32, L = 112, HR = 6.5, BR = 4, ZC = 11;
-const REST = [3, 8, 16, 9, 4, 1], MARK = [2, 1], STEP = 45, SEG = 20;
+const REST = [2, 5, 9, 6, 3, 1], MARK = [2, 1], STEP = 45, SEG = 20;
 const X = (i) => i * G, Y = (k) => (k + 1) * PITCH, HX = (j) => X(j) - G / 2;
 const X0 = -G - 4, X1 = X(N - 1) + G * 0.75;
 
@@ -129,7 +129,7 @@ function mount({ stage, svg, read }, value) {
       tset(b.l, act ? clamp(tip * falloff(d), 0, tip) : REST[b.i], now, d * STEP);
       for (const c of b.collars) {
         const same = act && !act.h && c.k === act.k;
-        tset(c.s, same ? (b.i === act.b ? 1 : 0.6) : 0, now, d * STEP);
+        tset(c.s, same ? (b.i === act.b ? 1 : 0.28) : 0, now, d * STEP);
       }
     }
     for (const h of heads) tset(h.s, act && act.h && act.j === h.j ? 1 : 0, now, 0);
@@ -159,7 +159,7 @@ hairline({
   name: "weld-map",
   means: "A header with six identical branches. Point at a weld for its field ID; the same weld lifts on every branch.",
   rules: [1, 2, 4, 5],
-  range: [18, 24, 34],
+  range: [9, 13, 20],
   tour: [[182, 155], [254, 224], [283, 160], null],
   mount,
 });
