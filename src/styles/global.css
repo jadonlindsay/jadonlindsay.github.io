@@ -47,7 +47,10 @@ figcaption { margin-top: 8px; color: var(--muted); font-size: var(--small); line
 
 /* Menu: always visible */
 .bar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 24px; padding: 12px var(--m); background: var(--bg); font-size: var(--small); font-weight: 700; }
-.wordmark { font-size: var(--body); font-weight: 900; letter-spacing: -0.03em; text-decoration: none; }
+.wordmark { display: inline-flex; align-items: center; font-size: var(--body); font-weight: 900; letter-spacing: -0.03em; text-decoration: none; }
+/* The A&M mark, used as provided: small, with clear space and a hairline rule before the name. */
+.wordmark .mark { display: block; width: auto; height: 26px; margin-right: 14px; }
+.wordmark span { padding-left: 14px; border-left: 1px solid #d6d1cb; line-height: 1.6; }
 .bar nav { display: flex; align-items: center; gap: 22px; }
 .bar nav a:not(.btn) { padding: 6px 0; text-decoration: none; transition: color 0.2s var(--ease); }
 .bar nav a:not(.btn):hover { color: var(--accent); }
