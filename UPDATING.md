@@ -65,6 +65,7 @@ Open the chart's file in `src/data/` and change the `y` value next to its `x` va
 - **Resume:** replace `public/resume.pdf`, keeping that exact name.
 - **Headshot:** replace `src/assets/projects/home/headshot.jpg`, keeping that exact name.
 - **Email, LinkedIn, headline, GPA:** edit `site.config.json`.
+- **Link previews** (the image LinkedIn shows when you share a link): they're made from the site's own text, headshot and drawings. After changing any of those, ask Claude Code to "remake the share images" (it runs `figures/og.cjs`). Then paste the link into [LinkedIn's Post Inspector](https://www.linkedin.com/post-inspector/) so LinkedIn picks up the new image; it keeps the old one otherwise.
 
 ## 5. Reorder, feature, or hide a project
 

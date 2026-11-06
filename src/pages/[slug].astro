@@ -29,7 +29,7 @@ const all = (await getCollection('projects'))
   .sort((a, b) => a.data.order - b.data.order);
 const next = all[(all.findIndex((p) => p.id === project.id) + 1) % all.length];
 ---
-<Base title={`${d.title}, Jadon Lindsay`} description={d.tagline ?? d.summary} current={d.group === 'leadership' ? 'leadership' : undefined}>
+<Base title={`${d.title}, Jadon Lindsay`} description={d.tagline ?? d.summary} image={`/og/${project.id}.jpg`} imageAlt={`${d.title}, a project by Jadon Lindsay`} current={d.group === 'leadership' ? 'leadership' : undefined}>
   <header class="case-head">
     <div class="wrap">
       <a class="back" href="/#work"><span aria-hidden="true">&larr;</span> All work</a>
