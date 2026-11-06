@@ -40,16 +40,20 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
     </div>
     <div class="hero-pic carousel" data-carousel aria-roledescription="carousel" aria-label="Photos of Jadon">
       <div class="slides">
-        <div class="slide is-on" aria-roledescription="slide" aria-label="1 of 2">
+        <div class="slide is-on" aria-roledescription="slide" aria-label="1 of 3">
           <Photo folder="home" file="headshot.jpg" alt="Portrait of Jadon Lindsay in a navy suit" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" eager />
         </div>
-        <div class="slide" aria-roledescription="slide" aria-label="2 of 2" aria-hidden="true">
+        <div class="slide" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
           <Photo folder="home" file="semiconductor-summit.jpg" alt="Jadon Lindsay giving a thumbs up in front of the Texas Semiconductor Summit backdrop" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" position="40% 50%" />
+        </div>
+        <div class="slide" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+          <Photo folder="home" file="team-assembling.jpg" alt="Three TriPhi team members in safety glasses fitting prop motors onto the rover's frame tubes" ratio="4 / 5" sizes="(max-width: 700px) 70vw, 360px" position="50% 40%" />
         </div>
       </div>
       <div class="dots">
         <button type="button" aria-label="Show photo 1" aria-pressed="true"></button>
         <button type="button" aria-label="Show photo 2" aria-pressed="false"></button>
+        <button type="button" aria-label="Show photo 3" aria-pressed="false"></button>
       </div>
     </div>
   </section>

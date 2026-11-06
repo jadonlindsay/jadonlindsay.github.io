@@ -41,8 +41,8 @@ gallery:
   - { src: cap-fea-3-von-mises.png, section: cap-fea, fit: contain, alt: "FEA plot of von Mises stress on the front cap, highest at the notch roots", caption: "Von Mises stress (peak 0.50 MPa at the notch roots)" }
   - { src: cap-fea-4-displacement.png, section: cap-fea, fit: contain, alt: "FEA plot of displacement on the front cap, largest at the screw ears", caption: "Displacement (max 0.38 µm)" }
   - { src: cap-fea-5-fos.png, section: cap-fea, fit: contain, alt: "FEA plot of factor of safety on the front cap, lowest at the notches", caption: "Factor of safety (min ~70)" }
-  - { placeholder: true, section: frame-revisions, caption: "Four printed frame revisions, side by side" }
-  - { placeholder: true, section: assembly-progress, caption: "Assembly progress photos" }
+  - { src: frame-tubes.jpg, section: frame-revisions, alt: "Two printed frame tubes, one black and one maroon, with end caps and a loose coupling sleeve on a lab bench", caption: "Printed frame tubes and end caps" }
+  - { src: first-assembly.jpg, section: assembly-progress, alt: "The rover's first full assembly on a workbench: H-frame tubes, four prop motors with propellers, the electronics housing and wiring, wheels not yet on", caption: "First full assembly, before the wheels go on" }
   - { src: expo-team.jpg, section: recognition, alt: "The TriPhi team in suits with their poster board and the first printed H-frame at the Innovation Expo", caption: "Fall 2026 Innovation Expo" }
 videos:
   - { src: flow-simulation, section: flow, alt: "Looping flow simulation around the paddle wheel", caption: "SOLIDWORKS Flow Simulation of the paddle wheel" }
@@ -121,7 +121,7 @@ The wheel has three sections: a solid cylinder at the center, a drafted cone on 
 
 **Result.** The PLA notches won't shear at maximum motor torque: a factor of safety of roughly 44–66 by hand and about 70 by FEA, with the two methods agreeing on the load path within 3%.
 
-**Scope.** This check assumes the motor drives the wheel directly, with no gearbox. The planned 150:1–400:1 reduction (see What's Next) changes that: if the gearbox mounts to this cap, the cap must react roughly that multiple of the motor torque, which would push the notch stresses past PLA's yield strength. The geared version will need a stronger cap design and a new check.
+**Scope.** This check assumes the motor drives the wheel directly.
 
 <More thumb="cap-fea-2-hand-calc.png" position="50% 18%" title="Full calculation and model checks" note="Hand calculation, FEA setup, and how the two compare">
 
@@ -197,9 +197,8 @@ At the Fall 2026 Innovation Expo we presented our full design process and the fi
 
 ### What's Next
 
-- **Drive gearing:** The wheel motors spin far too fast to drive the wheels directly; at that speed the blade tips would cavitate in water. Paddle wheels work at roughly 100–300 rpm, so we're working out a reduction of about 150:1 to 400:1.
+<Gallery section="assembly-progress" />
+
 - **Heat:** Sealing the body for water traps motor heat, and managing that is our next design focus.
 - **Sealing:** Wire pass-throughs from the motors to the battery will be sealed with epoxy.
 - **Water test:** Measure actual paddle thrust in a tank test.
-
-<Gallery section="assembly-progress" />
