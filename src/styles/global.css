@@ -80,7 +80,19 @@ a:hover > .go span, a:hover > * > .go span, a.go:hover span { transform: transla
 .photo.contain { background: #fff; }
 .photo.contain img { object-fit: contain; }
 
-/* Home: hero */
+/* Home: hero, on graph paper set back behind the page: its lines are the figures' line colours, faded,
+   it scrolls at under half speed (--gy) and wanders at random (--wx, --wy), both set in index.astro. */
+.hero-band { position: relative; overflow: hidden; isolation: isolate; background: #f2f0ed; }
+.hero-band::before { content: ""; position: absolute; inset: -220px -200px; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(#bdb7b0 1px, transparent 1px), linear-gradient(90deg, #bdb7b0 1px, transparent 1px),
+    linear-gradient(#dcd7d1 1px, transparent 1px), linear-gradient(90deg, #dcd7d1 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(ellipse 75% 85% at 50% 45%, #000 35%, transparent 100%);
+          mask-image: radial-gradient(ellipse 75% 85% at 50% 45%, #000 35%, transparent 100%);
+  translate: var(--wx, 0px) calc(var(--wy, 0px) + var(--gy, 0px)); }
+@media (prefers-reduced-motion: reduce) { .hero-band::before { translate: none; } }
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 32px clamp(32px, 6vw, 88px); align-items: center; padding-block: clamp(32px, 7vh, 72px); }
 .hero .lede { margin-top: 24px; }
 .carousel .slides { position: relative; aspect-ratio: 4 / 5; }
@@ -140,8 +152,9 @@ a:hover > .go span, a:hover > * > .go span, a.go:hover span { transform: transla
 .plate-photo .photo { height: 100%; }
 /* The rover's CAD render is mirrored so it faces the same way as its drawing. */
 .card-lead .plate-photo img { transform: scaleX(-1); }
-.card:hover .plate .fig { transform: translateY(-4px); }
-@media (hover: hover) { .card:hover .plate-photo { opacity: 1; } }
+.plate-link { display: block; }
+:is(.card, .plate-link):hover .plate .fig { transform: translateY(-4px); }
+@media (hover: hover) { :is(.card, .plate-link):hover .plate-photo { opacity: 1; } }
 /* On touch screens there is no hover: the photo shows while the card sits in the middle of the screen. */
 @media (hover: none) { .plate.reveal .plate-photo { opacity: 1; } }
 .card-lead .plate { aspect-ratio: 16 / 10; border-bottom: 0; border-right: 1px solid #e2ded9; }
