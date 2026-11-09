@@ -4,6 +4,7 @@ role: ENGR 102 team project, Texas A&M
 order: 6
 featured: true
 group: other
+link: /play/trouble/
 summary: "Terminal version of the board game Trouble in Python: ASCII board rendering, four-player turn logic, move validation, captures that send opponents home, and a rules screen at launch."
 cardImage: trouble-midgame.png
 cardFit: contain

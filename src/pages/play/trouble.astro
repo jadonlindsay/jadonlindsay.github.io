@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Play Trouble, Jadon Lindsay" description="Our ENGR 102 team's Python version of Trouble, running in your browser. You play Red against three computer players.">
+  <header class="case-head">
+    <div class="wrap">
+      <a class="back" href="/#other"><span aria-hidden="true">&larr;</span> Other projects</a>
+      <h1>Play Trouble</h1>
+      <p class="lede">Our ENGR 102 team's Python game, running in your browser. You play Red; the page plays Green, Yellow and Blue.</p>
+    </div>
+  </header>
+
+  <section class="wrap play">
+    <div class="term" id="term" role="log" aria-live="polite" aria-label="Game output"></div>
+    <form class="prompt" id="prompt" autocomplete="off">
+      <label for="answer" class="visually-hidden">Your answer</label>
+      <span class="caret" aria-hidden="true">&gt;</span>
+      <input id="answer" name="answer" type="text" spellcheck="false" autocapitalize="characters" disabled />
+      <button class="btn" type="submit" disabled>Enter</button>
+    </form>
+    <div class="chips" id="chips" aria-label="Quick answers"></div>
+    <div class="actions">
+      <button class="btn" type="button" id="start">Start a game</button>
+      <a class="btn btn-plain" href="/play/trouble-gamefile.py" target="_blank" rel="noopener">View the Python source</a>
+    </div>
+    <p class="note">The game file runs as written. As it loads, the page points its three <code>input()</code> prompts at the box above, and shows the rules file it would normally open in a browser tab. The first start downloads Python (about 10 MB), so it takes a few seconds.</p>
+  </section>
+</Base>
+
+<style>
+  .play { padding-bottom: 72px; }
+  .term { height: min(64vh, 620px); overflow: auto; padding: 16px; background: #f7f6f4; border: 1px solid #e2ded9;
+    font: 400 clamp(8.5px, 2.45vw, 14px)/1.35 ui-monospace, "Cascadia Mono", Consolas, monospace; white-space: pre; color: var(--ink); }
+  .term:empty::before { content: "Press Start a game."; color: var(--muted); }
+  .term .you { color: var(--accent); font-weight: 700; }
+  .prompt { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+  .caret { font: 700 18px ui-monospace, Consolas, monospace; color: var(--accent); }
+  .prompt input { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid #d6d1cb; background: #fff; font: 400 16px ui-monospace, Consolas, monospace; color: var(--ink); }
+  .prompt input:disabled { background: #f2f0ed; }
+  .prompt .btn { border: 0; cursor: pointer; }
+  .prompt .btn:disabled { background: #bdb7b0; cursor: default; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 40px; margin-top: 10px; }
+  .chips button { padding: 8px 14px; border: 1px solid #d6d1cb; background: var(--card); font: 700 var(--small) var(--font); cursor: pointer; }
+  .chips button:hover { border-color: var(--accent); color: var(--accent); }
+  .actions button { border: 0; cursor: pointer; }
+  .note { max-width: 70ch; margin-top: 20px; color: var(--muted); font-size: var(--small); }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<script is:inline src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js" defer></script>
+<script>
+  // Runs trouble-gamefile.py with Pyodide (Python in the browser). trouble-web.py, loaded first,
+  // supplies _web_input: Red's answers come from the box below, the other colours answer themselves.
+  const term = document.getElementById('term')!;
+  const form = document.getElementById('prompt') as HTMLFormElement;
+  const box = document.getElementById('answer') as HTMLInputElement;
+  const send = form.querySelector('button')!;
+  const chips = document.getElementById('chips')!;
+  const start = document.getElementById('start') as HTMLButtonElement;
+  const decoder = new TextDecoder();
+  let py: any = null;
+  let ns: any = null;
+  let pending: ((s: string) => void) | null = null;
+
+  const write = (text: string, cls?: string) => {
+    const stick = term.scrollTop + term.clientHeight >= term.scrollHeight - 40;
+    if (cls) { const s = document.createElement('span'); s.className = cls; s.textContent = text; term.append(s); }
+    else term.append(text);
+    if (stick) term.scrollTop = term.scrollHeight;
+  };
+
+  const choices = (prompt: string): [string, string][] => {
+    if (prompt.startsWith('Press')) return [['Roll', '']];
+    if (prompt.startsWith('What')) return [['a · add', 'a'], ['m · move', 'm'], ['s · skip', 's'], ['e · end', 'e']];
+    if (prompt.startsWith('Which')) {
+      const keys: string[] = ns ? [...ns.get('R_pieces').keys()] : [];
+      return keys.map((k) => [k, k]);
+    }
+    return [];
+  };
+
+  // Called from Python: resolves with Red's answer.
+  (window as any).troubleAsk = (prompt: string) => new Promise<string>((resolve) => {
+    pending = resolve;
+    box.disabled = send.disabled = false;
+    box.value = '';
+    chips.replaceChildren(...choices(prompt).map(([label, value]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = label;
+      b.addEventListener('click', () => answer(value));
+      return b;
+    }));
+    box.focus({ preventScroll: true });
+    term.scrollTop = term.scrollHeight;
+  });
+
+  function answer(value: string) {
+    if (!pending) return;
+    const done = pending;
+    pending = null;
+    box.disabled = send.disabled = true;
+    chips.replaceChildren();
+    done(value.trim());
+  }
+  form.addEventListener('submit', (e) => { e.preventDefault(); answer(box.value); });
+
+  start.addEventListener('click', async () => {
+    if (py) { location.reload(); return; }
+    start.disabled = true;
+    start.textContent = 'Loading Python...';
+    try {
+      py = await (window as any).loadPyodide();
+      py.setStdout({ write: (buf: Uint8Array) => { write(decoder.decode(buf)); return buf.length; } });
+      py.setStderr({ write: (buf: Uint8Array) => { write(decoder.decode(buf)); return buf.length; } });
+      const [web, game] = await Promise.all(['/play/trouble-web.py', '/play/trouble-gamefile.py'].map((u) => fetch(u).then((r) => r.text())));
+      ns = py.globals.get('dict')();
+      start.textContent = 'New game';
+      start.disabled = false;
+      await py.runPythonAsync(web, { globals: ns });
+      await py.runPythonAsync(game.replace(/\binput\(/g, 'await _web_input('), { globals: ns });
+      write('\n— Game over. Press New game to play again. —\n', 'you');
+    } catch (err) {
+      write(`\n${err}\n`);
+      start.textContent = 'Try again';
+      start.disabled = false;
+    }
+  });
+</script>

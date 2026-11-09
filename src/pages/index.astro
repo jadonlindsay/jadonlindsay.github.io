@@ -134,6 +134,7 @@ const folderOf = (p: (typeof all)[number]) => p.data.imageFolder ?? p.id;
                 <h3>{p.data.title}</h3>
                 <p class="role">{p.data.role}</p>
                 <p>{p.data.summary}</p>
+                {p.data.link && <a class="go" href={p.data.link}>Play it in your browser <span aria-hidden="true">&rarr;</span></a>}
               </div>
             </div>
           ))}
